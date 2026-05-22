@@ -1,0 +1,96 @@
+# Software projects configuration
+# Modern card-based layout with technology stack badges
+projects:
+  - id: 1
+    name: "drug-surface-MD"
+    url: "https://github.com/lucasattia/drug-surface-MD"
+    description: "Molecular dynamics simulations of interfacial competition of excipients on drug surfaces"
+    role: "Developer"
+    languages:
+      - name: "Python"
+        icon: "fab fa-python"
+        color: "#3776AB"
+      - name: "GROMACS"
+        icon: "fas fa-atom"
+        color: "#E74C3C"
+      - name: "Bash"
+        icon: "fas fa-terminal"
+        color: "#4EAA25"
+  - id: 2
+    name: "fastsolv"
+    url: "https://github.com/lucasattia/fastsolv"
+    description: "Python package, website, and paper code for fast solubility prediction of drug molecules"
+    role: "Developer"
+    languages:
+      - name: "Python"
+        icon: "fab fa-python"
+        color: "#3776AB"
+      - name: "PyTorch"
+        icon: "fas fa-brain"
+        color: "#EE4C2C"
+      - name: "Jupyter"
+        icon: "fas fa-book-open"
+        color: "#F37626"
+        
+  - id: 3
+    name: "NanoParticleTools"
+    url: "https://github.com/lucasattia/NanoParticleTools"
+    description: "Open-source toolkit for simulating and analyzing upconverting nanoparticle emission using kinetic Monte Carlo methods"
+    role: "Developer"
+    languages:
+      - name: "Python"
+        icon: "fab fa-python"
+        color: "#3776AB"
+      - name: "PyTorch"
+        icon: "fas fa-brain"
+        color: "#EE4C2C"
+
+  - id: 4
+    name: "crystalPBM"
+    url: "https://github.com/lucasattia/crystalPBM"
+    description: "Population balance model for simulating and analyzing batch crystallization processes"
+    role: "Developer"
+    languages:
+      - name: "Python"
+        icon: "fab fa-python"
+        color: "#3776AB"
+      - name: "Jupyter"
+        icon: "fas fa-book-open"
+        color: "#F37626"
+  - id: 5
+    name: "vsa_explainer"
+    url: "https://github.com/srijitseal/vsa_explainer"
+    description: "Python package to visualize and explain RDKit VSA molecular descriptor atomic contributions"
+    role: "Contributor"
+    languages:
+      - name: "Python"
+        icon: "fab fa-python"
+        color: "#3776AB"
+      - name: "RDKit"
+        icon: "fas fa-flask"
+        color: "#9467BD"
+
+  - id: 6
+    name: "fastprop"
+    url: "https://github.com/lucasattia/fastprop"
+    description: "Fast molecular property prediction using mordredcommunity descriptors and deep learning"
+    role: "Contributor"
+    languages:
+      - name: "Python"
+        icon: "fab fa-python"
+        color: "#3776AB"
+      - name: "PyTorch"
+        icon: "fas fa-brain"
+        color: "#EE4C2C"
+
+
+# Configuration options
+config:
+  # Maximum number of projects to display (leave blank for all)
+  max_display:
+  # Show "More Projects" button
+  show_more_button: true
+  # Button text
+  button_text: "More Software"
+  # Button link
+  button_link: "https://github.com/lucasattia"

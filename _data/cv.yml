@@ -1,0 +1,106 @@
+#- title: General Information
+#  type: map
+#  contents:
+#    - name: Full Name
+#      value: Lucas Attia
+#    - name: Date of Birth
+#      value: 21th March 1999
+#    - name: Languages
+#      value: English
+
+- title: Education
+  type: time_table
+  contents:
+    - title: PhD
+      institution: Massachusetts Institute of Technology, Cambridge MA, USA
+      year: 2021-2026
+      description:
+        - Thesis- Nanoemulsion-templated drug nanoparticles for advanced oral formulation
+        - Advised by Patrick S. Doyle
+        - Minor- Machine Learning
+    - title: BSE
+      institution: University of Delaware, Newark DE, USA
+      year: 2017-2021
+      description:
+        - Thesis- Computational Modeling of Fluid Flow through Open Cellular Foams and Lattice Structures
+        - Advised by Catherine A. Fromen
+        - Minrors- Computer Science, Chemistry
+
+- title: Experience
+  type: time_table
+  contents:
+    - title: PhD Researcher
+      institution: Massachusetts Institute of Technology
+      year: 2021-2026
+      description:
+        - Simulated the effects of excipients on nanoparticle crystallinity using atomistic molecular dynamics (\href{https://github.com/lucasattia/drug-surface-MD/blob/main/README.md}{open source code})
+        - Description 2.
+        - title: Description 3.
+          contents:
+            - Sub-description 1.
+            - Sub-description 2.
+
+    - title: Machine Learning Intern 
+      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
+      year: 1917-1933
+
+    - title: Professor of Theoretical Physics
+      institution: Karl-Ferdinand University, Prague, Czechoslovakia
+      year: 1911 - 1917
+      description:
+
+    - title: Associate Professor of Theoretical Physics
+      institution: University of Zurich, Zurich, Switzerland
+      year: 1909 - 1911
+
+- title: Open Source Projects
+  type: time_table
+  contents:
+    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
+      year: 2015-now
+      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+
+- title: Honors and Awards 
+  type: time_table
+  contents:
+    - year: 2024
+      items: 
+        - Merck best poster award, Controlled Release Society Annual Meeting and Exposition
+        - Langmuir Graduate Award, American Chemical Society Colloid and Surface Science Symposium
+        - Best graduate student presentation, Massachussetts Institute of Technology Department of Chemical Engineering
+    - year: 2024
+      items: 
+        - Max Planck Medal
+
+- title: Fellowships and Scholarships
+  type: time_table
+  contents:
+    - year: 1921
+      items: 
+        - Nobel Prize in Physics 
+        - Matteucci Medal
+    - year: 2029
+      items: 
+        - Max Planck Medal
+
+- title: Academic Interests
+  type: nested_list
+  contents:
+    - title: Topic 1. Molecular modelling
+      items: 
+        - Description 1. Polymer simulation 
+        - Description 2. Models for organic crystals
+    - title: Topic 2. Nanomaterials
+      items:
+        - Description 1. Organic nancrystals for drug delivery  
+        - Description 2. Nanoemulsions 
+    - title: Topic 3. Soft materials
+      items:
+        - Description 1. Hydrogels  
+        - Description 2. Polymer solutions 
+
+
+- title: Other Interests
+  type: list
+  contents:
+    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
