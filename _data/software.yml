@@ -31,21 +31,6 @@ projects:
         icon: "fas fa-microchip"
         color: "#76B900"
 
-  - id: 3
-    name: "openconf"
-    url: "https://github.com/rowansci/openconf"
-    company: "Rowan Science"
-    company_url: "https://rowansci.com"
-    description: "Fixed low-mode vibrational analysis to use mass-weighted coordinates via the GF-matrix method. Correction substantially reranks soft modes in heavy-atom systems (e.g. bromine, iodine, sulfur), improving conformational sampling accuracy."
-    role: "Contributor"
-    languages:
-      - name: "Python"
-        icon: "fab fa-python"
-        color: "#3776AB"
-      - name: "Comp. Chemistry"
-        icon: "fas fa-atom"
-        color: "#8E44AD"
-
 # Configuration options
 config:
   max_display:
