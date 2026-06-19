@@ -111,11 +111,36 @@
     border-radius: 3px;
     flex-shrink: 0;
   }
+
+  .sw-company {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #666;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.2rem;
+  }
+
+  .sw-company:hover {
+    color: #333;
+    text-decoration: underline;
+  }
 </style>
 
 <a class="sw-card" href="{{ include.project.url }}" target="_blank" rel="noopener noreferrer">
   <div class="sw-card-header">
-    <span class="sw-card-name">{{ include.project.name }}</span>
+    <div>
+      <span class="sw-card-name">{{ include.project.name }}</span>
+      {% if include.project.company %}
+      <br>
+      <a class="sw-company" href="{{ include.project.company_url }}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">
+        <i class="fas fa-building" style="font-size: 0.65rem;"></i>{{ include.project.company }}
+      </a>
+      {% endif %}
+    </div>
     <i class="fab fa-github sw-github-icon"></i>
   </div>
   <div class="sw-card-body">
