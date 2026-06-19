@@ -4,7 +4,7 @@ permalink: /software/
 title: software
 description: check out my open-source projects at the repos below
 nav: true
-nav_order: 3
+nav_order: 4
 ---
 
 <div class="software-projects-main">

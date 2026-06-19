@@ -4,7 +4,7 @@ permalink: /contributions/
 title: contributions
 description: open-source contributions to scientific software projects
 nav: true
-nav_order: 4
+nav_order: 1
 ---
 
 <style>
