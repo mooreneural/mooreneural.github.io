@@ -131,11 +131,116 @@ nav_order: 1
         </a>
       </div>
       <p class="contrib-desc">
-        Corrected the GF-matrix vibrational analysis implementation to use mass-weighted Cartesian coordinates. 
-        The prior code used unweighted coordinates, causing heavy atoms (Br, I, S) to artificially dominate 
-        eigenvalue calculations and misidentify soft conformational modes. Fix substantially reranks low-frequency 
-        modes in heavy-atom systems — e.g. 2-iodothiophene shifted from 3 to 5 correctly identified soft modes, 
+        Corrected the GF-matrix vibrational analysis implementation to use mass-weighted Cartesian coordinates.
+        The prior code used unweighted coordinates, causing heavy atoms (Br, I, S) to artificially dominate
+        eigenvalue calculations and misidentify soft conformational modes. Fix substantially reranks low-frequency
+        modes in heavy-atom systems — e.g. 2-iodothiophene shifted from 3 to 5 correctly identified soft modes,
         with iodine displacement dropping from 59% to ~3%.
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
+      <div class="contrib-date">May 2026</div>
+      <div class="contrib-status">merged</div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
+        <a href="https://github.com/NVIDIA-BioNeMo/nvMolKit/pull/183" target="_blank" rel="noopener noreferrer">
+          Gate BFGS gradient-convergence denominator fix on RDKit &gt;= 2026.03
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/NVIDIA-BioNeMo/nvMolKit" target="_blank" rel="noopener noreferrer">NVIDIA-BioNeMo/nvMolKit</a>
+        <a class="contrib-company" href="https://www.nvidia.com/en-us/clara/bionemo/" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> NVIDIA BioNeMo
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Ported the RDKit 2026.03 BFGS gradient-convergence denominator fix into nvMolKit's CUDA minimizer kernels,
+        gated behind a version check to preserve compatibility with older RDKit builds. Applied to both the batched
+        and per-molecule BFGS paths (<code>bfgs_minimize.cu</code>, <code>bfgs_minimize_permol_kernels.cu</code>).
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
+      <div class="contrib-date">May 2026</div>
+      <div class="contrib-status">merged</div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
+        <a href="https://github.com/rdkit/rdkit/pull/9298" target="_blank" rel="noopener noreferrer">
+          Fix BFGS gradient-convergence denominator for negative energies
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/rdkit/rdkit" target="_blank" rel="noopener noreferrer">rdkit/rdkit</a>
+        <a class="contrib-company" href="https://www.rdkit.org" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> RDKit
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Fixed a decade-old bug in the BFGS optimizer where negative energy values (common in MMFF94/UFF force fields)
+        caused the convergence denominator to clamp to 1.0, artificially tightening gradient tolerance and triggering
+        spurious "too many iterations" errors. Replaced <code>funcVal</code> with <code>fabs(funcVal)</code> in
+        <code>BFGSOpt.h</code> and added a regression test covering always-negative energy trajectories.
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
+      <div class="contrib-date">May 2026</div>
+      <div class="contrib-status">merged</div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
+        <a href="https://github.com/NVIDIA-BioNeMo/nvMolKit/pull/177" target="_blank" rel="noopener noreferrer">
+          Perf &amp; correctness fixes: RMSD warp-shuffle, TFD precision, eigensolver persistence, similarity cache, BFGS sign fix, fused Butina sync reduction
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/NVIDIA-BioNeMo/nvMolKit" target="_blank" rel="noopener noreferrer">NVIDIA-BioNeMo/nvMolKit</a>
+        <a class="contrib-company" href="https://www.nvidia.com/en-us/clara/bionemo/" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> NVIDIA BioNeMo
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Six targeted GPU performance and correctness improvements across independent subsystems: replaced sequential
+        block reductions with warp-shuffle patterns in conformer RMSD (17→3 sync calls); switched TFD kernels to
+        double-precision sqrt with division-by-zero guards; moved eigensolver buffer allocation to a persistent class
+        member; introduced per-device similarity caching; preserved signed-energy reference behavior in BFGS; and
+        fused Butina clustering GPU→CPU sync points from ~6 to 2 per iteration.
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
+      <div class="contrib-date">May 2026</div>
+      <div class="contrib-status">merged</div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
+        <a href="https://github.com/baker-laboratory/RoseTTAFold-All-Atom/pull/176" target="_blank" rel="noopener noreferrer">
+          Fix 6 bugs: undefined vars, data corruption, NameError, empty cat, shape mismatch, dead code
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/baker-laboratory/RoseTTAFold-All-Atom" target="_blank" rel="noopener noreferrer">baker-laboratory/RoseTTAFold-All-Atom</a>
+        <a class="contrib-company" href="https://www.bakerlab.org" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> Baker Laboratory
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Fixed six distinct bugs across the RoseTTAFold-All-Atom codebase: initialized <code>L_s</code>/<code>offset</code>
+        before use in multi-chain PDB parsing; removed a line in <code>protein.py</code> overwriting insertion counts
+        with residue indices; corrected an undefined variable in <code>Track_module.py</code>'s symmetry fitting;
+        added a guard for empty-tensor <code>torch.cat()</code> in the refinement block; fixed a tensor shape mismatch
+        from <code>(L,1)</code> to <code>(1,L,1)</code>; and removed unreachable dead code in <code>parsers.py</code>.
       </p>
     </div>
   </div>
