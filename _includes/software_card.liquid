@@ -5,8 +5,8 @@
 <style>
   .sw-card {
     position: relative;
-    background: #fff;
-    border: 1.5px solid #d0d0d0;
+    background: var(--global-card-bg-color);
+    border: 1.5px solid var(--global-divider-color);
     border-radius: 6px;
     overflow: hidden;
     display: flex;
@@ -18,32 +18,32 @@
 
   .sw-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
-    border-color: #999;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    border-color: var(--global-text-color-light);
     text-decoration: none !important;
   }
 
   .sw-card-header {
-    background: #f0f0f0;
+    background: var(--global-divider-color);
     padding: 0.85rem 1.1rem 0.75rem;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 0.5rem;
-    border-bottom: 1.5px solid #d8d8d8;
+    border-bottom: 1.5px solid var(--global-divider-color);
   }
 
   .sw-card-name {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
     font-weight: 700;
     font-size: 1rem;
-    color: #1a1a1a;
+    color: var(--global-text-color);
     line-height: 1.25;
     word-break: break-word;
   }
 
   .sw-github-icon {
-    color: #888;
+    color: var(--global-text-color-light);
     font-size: 1rem;
     margin-top: 1px;
     flex-shrink: 0;
@@ -51,7 +51,7 @@
   }
 
   .sw-card:hover .sw-github-icon {
-    color: #333;
+    color: var(--global-text-color);
   }
 
   .sw-card-body {
@@ -66,7 +66,7 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
     font-size: 0.875rem;
     font-weight: 400;
-    color: #444;
+    color: var(--global-text-color);
     line-height: 1.55;
     margin: 0;
     flex: 1;
@@ -79,7 +79,7 @@
     flex-wrap: wrap;
     gap: 0.4rem;
     padding-top: 0.6rem;
-    border-top: 1px solid #ebebeb;
+    border-top: 1px solid var(--global-divider-color);
   }
 
   .sw-badges {
@@ -105,8 +105,8 @@
     text-transform: uppercase;
     letter-spacing: 0.07em;
     padding: 0.18rem 0.5rem;
-    border: 1.5px solid #bbb;
-    color: #555;
+    border: 1.5px solid var(--global-divider-color);
+    color: var(--global-text-color-light);
     white-space: nowrap;
     border-radius: 3px;
     flex-shrink: 0;
@@ -116,7 +116,7 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
     font-size: 0.75rem;
     font-weight: 500;
-    color: #666;
+    color: var(--global-text-color-light);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -125,7 +125,7 @@
   }
 
   .sw-company:hover {
-    color: #333;
+    color: var(--global-text-color);
     text-decoration: underline;
   }
 </style>

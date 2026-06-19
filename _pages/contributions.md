@@ -16,7 +16,7 @@ nav_order: 1
   display: flex;
   gap: 1.2rem;
   padding: 1.2rem 0;
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid var(--global-divider-color);
   align-items: flex-start;
 }
 
@@ -32,7 +32,7 @@ nav_order: 1
 
 .contrib-date {
   font-size: 0.78rem;
-  color: #888;
+  color: var(--global-text-color-light);
   font-family: monospace;
 }
 
@@ -50,6 +50,12 @@ nav_order: 1
   border: 1px solid #a5d6a7;
 }
 
+html[data-theme='dark'] .contrib-status {
+  background: #1b3a1f;
+  color: #81c784;
+  border-color: #388e3c;
+}
+
 .contrib-body {
   flex: 1;
 }
@@ -57,7 +63,7 @@ nav_order: 1
 .contrib-title {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--global-text-color);
   margin-bottom: 0.2rem;
   line-height: 1.3;
 }
@@ -73,18 +79,18 @@ nav_order: 1
 
 .contrib-repo {
   font-size: 0.78rem;
-  color: #555;
+  color: var(--global-text-color-light);
   margin-bottom: 0.45rem;
 }
 
 .contrib-repo a {
-  color: #555;
+  color: var(--global-text-color-light);
   text-decoration: none;
   font-family: monospace;
 }
 
 .contrib-repo a:hover {
-  color: #1a1a1a;
+  color: var(--global-text-color);
   text-decoration: underline;
 }
 
@@ -93,19 +99,19 @@ nav_order: 1
   align-items: center;
   gap: 0.25rem;
   font-size: 0.73rem;
-  color: #666;
+  color: var(--global-text-color-light);
   text-decoration: none;
   margin-left: 0.5rem;
 }
 
 .contrib-company:hover {
-  color: #333;
+  color: var(--global-text-color);
   text-decoration: underline;
 }
 
 .contrib-desc {
   font-size: 0.85rem;
-  color: #444;
+  color: var(--global-text-color);
   line-height: 1.55;
   margin: 0;
 }
