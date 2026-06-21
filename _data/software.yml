@@ -2,7 +2,7 @@ projects:
   - id: 1
     name: "lacuna"
     url: "https://github.com/mooreneural/lacuna"
-    description: "Cryptic binding pocket discovery via conformational ensemble analysis. Identifies hidden druggable sites in proteins invisible in static structures. Achieves 70% success rate on benchmark cryptic-pocket proteins."
+    description: "Python tool for cryptic binding pocket discovery — finds hidden druggable sites invisible in static protein structures. Generates conformational ensembles, detects pockets per conformer, clusters across the ensemble, and ranks by druggability and crypticity. Achieves 85% detection (17/20) on benchmark cryptic-pocket targets including K-Ras switch-II and T4L L99A. Outputs docking-ready Boltz YAML, AutoDock Vina configs, and PDB files."
     role: "Developer"
     languages:
       - name: "Python"
