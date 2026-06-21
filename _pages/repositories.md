@@ -7,33 +7,26 @@ nav: true
 nav_order: 4
 ---
 
-<div class="software-projects-main">
-
-  {%- comment -%} Software Cards Grid {%- endcomment -%}
+<div class="sw-list">
   {% if site.data.software.projects %}
-  <div class="software-cards-grid">
     {% assign projects = site.data.software.projects %}
     {% if site.data.software.config.max_display %}
       {% assign projects = projects | slice: 0, site.data.software.config.max_display %}
     {% endif %}
-
     {% for project in projects %}
       {% include software_card.liquid project=project %}
     {% endfor %}
-  </div>
   {% endif %}
-
-  {%- comment -%} More Projects Button {%- endcomment -%}
-  {% if site.data.software.config.show_more_button and site.data.software.config.button_link %}
-  <a href="{{ site.data.software.config.button_link }}"
-     class="software-more-button"
-     target="_blank"
-     rel="noopener noreferrer">
-    {{ site.data.software.config.button_text | default: "More Projects" }}
-  </a>
-  {% endif %}
-
 </div>
+
+{% if site.data.software.config.show_more_button and site.data.software.config.button_link %}
+<div style="margin-top: 1rem;">
+  <a href="{{ site.data.software.config.button_link }}" target="_blank" rel="noopener noreferrer"
+     style="font-size: 0.82rem; color: var(--global-text-color-light); text-decoration: none;">
+    {{ site.data.software.config.button_text | default: "More on GitHub" }} →
+  </a>
+</div>
+{% endif %}
 
 {%- comment -%}
 Legacy GitHub users section - uncomment if you want to keep it
