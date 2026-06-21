@@ -18,7 +18,7 @@ projects:
   - id: 2
     name: "HelixDB"
     url: "https://github.com/mooreneural/HelixDB"
-    description: "Zero-parse biomolecular tensor storage (.ptt) for AlphaFold, Boltz, and OpenFold training pipelines. Achieves 34x faster feature assembly compared to conventional mmCIF-based approaches."
+    description: "Zero-parse biomolecular tensor storage (.ptt format) that eliminates repeated mmCIF parsing in structural biology ML pipelines. Convert once, load instantly: backbone coords, MSA tokens, bond graphs, and PLM embeddings (ESM2/ESM3) via Zarr/LZ4 with memory-mapped lazy access. Benchmarks: 34x faster feature assembly, 1,794x faster than JackHMMER MSA regeneration, ~16,000 structures/sec DataLoader throughput. Compatible with PyTorch, JAX, NumPy, and S3/GCS streaming."
     role: "Developer"
     languages:
       - name: "Python"
