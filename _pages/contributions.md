@@ -126,6 +126,34 @@ html[data-theme='dark'] .contrib-status {
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
+        <a href="https://github.com/ClawBio/ClawBio/pull/300" target="_blank" rel="noopener noreferrer">
+          Fix statistical and biological errors in four analysis skills
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/ClawBio/ClawBio" target="_blank" rel="noopener noreferrer">ClawBio/ClawBio</a>
+        <a class="contrib-company" href="https://github.com/ClawBio" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> ClawBio
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Corrected four critical errors across bioinformatic analysis skills: replaced incorrect normal-distribution
+        p-values in <code>rnaseq-de</code> with a proper Welch t-test (prior method had a 90.6% false discovery rate
+        at n=3); fixed a flipped sign in the Gompertz age formula in <code>proteomics-clock</code> that caused a
+        consistent +6.13-year bias; extended ORF detection in <code>analyze-fasta</code> from 3 forward frames to
+        all 6 (enabling reverse-complement gene discovery); and added EM admixture convergence checking to
+        <code>genome-compare</code> to prevent silent failures. Added unit tests and scipy dependency declaration.
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
+      <div class="contrib-date">Jun 2026</div>
+      <div class="contrib-status">merged</div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
         <a href="https://github.com/rowansci/openconf/pull/5" target="_blank" rel="noopener noreferrer">
           Fix low-mode vibrational analysis to use mass-weighted coordinates
         </a>
