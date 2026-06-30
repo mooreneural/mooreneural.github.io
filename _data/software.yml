@@ -31,6 +31,40 @@ projects:
         icon: "fas fa-microchip"
         color: "#76B900"
 
+  - id: 3
+    name: "Lockon"
+    url: "https://github.com/mooreneural/Lockon"
+    private: true
+    description: "Foundation model for antibody-drug conjugates (ADCs). Represents an ADC as a complete assembly — antibody, linker, payload, conjugation site, and drug-to-antibody ratio (DAR) — and learns to predict binding, linker stability, payload release, efficacy, and toxicity. Built to model the conjugate as a whole, addressing a regime that single-molecule, single-structure models do not capture. Early development."
+    role: "Developer"
+    languages:
+      - name: "Python"
+        icon: "fab fa-python"
+        color: "#3776AB"
+      - name: "PyTorch"
+        icon: "fas fa-brain"
+        color: "#EE4C2C"
+      - name: "Drug Discovery"
+        icon: "fas fa-pills"
+        color: "#8E44AD"
+
+  - id: 4
+    name: "Bicycle"
+    url: "https://github.com/mooreneural/Bicycle"
+    private: true
+    description: "Structural-scoring pipeline for large-scale virtual screening of predicted receptor-ligand complexes. Computes RMSD over user-selected pocket residues between Boltz-predicted complexes and a panel of experimental receptor conformations, assigning each ligand a triage label for downstream prioritization. Implements the HTR2A (5-HT2A) screening workflow used in dissertation research — 5-HT2A conformational states spanning hallucinogenic agonists (psilocin, LSD) and non-hallucinogenic antagonists (risperidone, ketanserin). 5/6 positive controls classified correctly."
+    role: "Developer"
+    languages:
+      - name: "Python"
+        icon: "fab fa-python"
+        color: "#3776AB"
+      - name: "Boltz"
+        icon: "fas fa-atom"
+        color: "#E74C3C"
+      - name: "SLURM/HPC"
+        icon: "fas fa-server"
+        color: "#27AE60"
+
 # Configuration options
 config:
   max_display:

@@ -50,6 +50,26 @@
     color: var(--global-text-color-light);
   }
 
+  .sw-private {
+    display: inline-block;
+    margin-top: 0.3rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    background: #fff8e1;
+    color: #f57f17;
+    border: 1px solid #ffe082;
+  }
+
+  html[data-theme='dark'] .sw-private {
+    background: #3a2e00;
+    color: #ffd54f;
+    border-color: #f9a825;
+  }
+
   .sw-body {
     flex: 1;
     min-width: 0;
@@ -124,6 +144,9 @@
 <div class="sw-item">
   <div class="sw-meta">
     <span class="sw-status">software</span>
+    {% if include.project.private %}
+    <span class="sw-private">private</span>
+    {% endif %}
     {% if include.project.role %}
     <span class="sw-role-label">{{ include.project.role }}</span>
     {% endif %}
