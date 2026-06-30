@@ -168,7 +168,7 @@ html[data-theme='dark'] .contrib-status {
         Corrected the GF-matrix vibrational analysis implementation to use mass-weighted Cartesian coordinates.
         The prior code used unweighted coordinates, causing heavy atoms (Br, I, S) to artificially dominate
         eigenvalue calculations and misidentify soft conformational modes. Fix substantially reranks low-frequency
-        modes in heavy-atom systems — e.g. 2-iodothiophene shifted from 3 to 5 correctly identified soft modes,
+        modes in heavy-atom systems, e.g. 2-iodothiophene shifted from 3 to 5 correctly identified soft modes,
         with iodine displacement dropping from 59% to ~3%.
       </p>
     </div>
