@@ -141,6 +141,7 @@ html[data-theme='dark'] .contrib-status {
         reducing peak intermediate tensor memory from ~256 MB to ~72 MB (3.56x reduction) with no throughput
         regression. Outputs verified numerically identical on an RTX 5080. Merged by Augustin Zidek with
         acknowledgment in planned v3.0.4 release notes.
+        <a href="https://github.com/google-deepmind/alphafold3/commit/7b4c2a532f38683071f718cdb8103383755d9f15" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">7b4c2a5</a>
       </p>
     </div>
   </div>
