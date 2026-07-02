@@ -18,7 +18,7 @@ projects:
   - id: 2
     name: "HelixDB"
     url: "https://github.com/mooreneural/HelixDB"
-    description: "Zero-parse biomolecular tensor storage (.ptt format) that eliminates repeated mmCIF parsing in structural biology ML pipelines. Convert once, load instantly: backbone coords, MSA tokens, bond graphs, and PLM embeddings (ESM2/ESM3) via Zarr/LZ4 with memory-mapped lazy access. Benchmarks: 34x faster feature assembly, 1,794x faster than JackHMMER MSA regeneration, ~16,000 structures/sec DataLoader throughput. Compatible with PyTorch, JAX, NumPy, and S3/GCS streaming."
+    description: "AI-native biomolecular storage format (.ptt) for structural biology ML pipelines. Converts mmCIF structures once and caches all tensors needed for training: atomic coordinates, backbone geometry, bond graphs, MSA alignments, and ESM2/ESM3 embeddings in a single Zarr/LZ4 container with memory-mapped lazy access. At 100,000-structure scale: structure loading drops from 3.7 hours to 5 minutes (45x), MSA generation from 4,000 hours to 2.2 hours (1,794x), and backbone-only loads run 6 to 284x faster than repeated mmCIF parsing. Verified end-to-end on Boltz 2. Supports PyTorch, JAX, NumPy, and cloud streaming via S3/GCS."
     role: "Developer"
     languages:
       - name: "Python"
