@@ -121,6 +121,32 @@ html[data-theme='dark'] .contrib-status {
 
   <div class="contrib-item">
     <div class="contrib-meta">
+      <div class="contrib-date">Jul 2026</div>
+      <div class="contrib-status">merged</div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
+        <a href="https://github.com/google-deepmind/alphafold3/pull/674" target="_blank" rel="noopener noreferrer">
+          Replace two-einsum OuterProductMean with fused three-way einsum
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/google-deepmind/alphafold3" target="_blank" rel="noopener noreferrer">google-deepmind/alphafold3</a>
+        <a class="contrib-company" href="https://deepmind.google" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> Google DeepMind
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Replaced two sequential einsum operations in OuterProductMean with a single fused three-way einsum,
+        reducing peak intermediate tensor memory from ~256 MB to ~72 MB (3.56x reduction) with no throughput
+        regression. Outputs verified numerically identical on an RTX 5080. Merged by Augustin Zidek with
+        acknowledgment in planned v3.0.4 release notes.
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
       <div class="contrib-date">Jun 2026</div>
       <div class="contrib-status">merged</div>
     </div>
