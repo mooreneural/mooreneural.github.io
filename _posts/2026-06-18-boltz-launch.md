@@ -11,4 +11,8 @@ BoltzProt-1 nearly tripled hit rates on protein design compared to their earlier
 
 They also launched a GPU API at $0.025 per prediction built for agentic workflows, which suggests they're thinking about how this plugs into automated pipelines rather than just being a one-off tool.
 
-Excited to see how this holds up across more diverse target classes. The sample sizes here are still small, but the direction is real. Boltz is building in public and moving fast. This is what the next generation of drug discovery infrastructure looks like.
+Excited to see how this holds up across more diverse target classes. The sample sizes here are still small, but the direction is real.
+
+Boltz is building in public and moving fast. This is what the next generation of drug discovery infrastructure looks like.
+
+Boltz
