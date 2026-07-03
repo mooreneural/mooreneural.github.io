@@ -308,14 +308,18 @@ blockquote {
     font-size: 4rem;
 
     a {
-      i::before {
+      i::before,
+      svg {
         color: var(--global-text-color);
+        fill: var(--global-text-color);
         transition-property: all 0.2s ease-in-out;
       }
 
       &:hover {
-        i::before {
+        i::before,
+        svg {
           color: var(--global-theme-color);
+          fill: var(--global-theme-color);
         }
       }
     }
