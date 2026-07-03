@@ -1,5 +1,21 @@
 projects:
   - id: 1
+    name: "HelixDB / ProteinTensor"
+    url: "https://github.com/mooreneural/HelixDB"
+    description: "AI-native biomolecular storage format (.ptt) for structural biology ML. Converts a structure or a raw sequence once and caches every tensor training needs - atomic coordinates, backbone geometry, bond graphs, MSA alignments, ESM2/ESM3 embeddings, pair features, and ligands - in a single Zarr/LZ4 container with memory-mapped lazy access. On a 76-3,525 residue benchmark: 2-95x faster full loads and up to ~250x backbone-only loads vs re-parsing mmCIF, ~4x faster full feature assembly, and MSAs cached once instead of re-parsed every epoch. Verified end-to-end on Boltz 2. PyTorch/JAX/NumPy, streams from S3/GCS. MIT-licensed."
+    role: "Developer"
+    languages:
+      - name: "Python"
+        icon: "fab fa-python"
+        color: "#3776AB"
+      - name: "Zarr"
+        icon: "fas fa-database"
+        color: "#E67E22"
+      - name: "CUDA"
+        icon: "fas fa-microchip"
+        color: "#76B900"
+
+  - id: 2
     name: "lacuna"
     url: "https://github.com/mooreneural/lacuna"
     description: "Python tool for cryptic binding pocket discovery. Generates conformational ensembles via NMA, detects pockets per conformer, clusters across the ensemble, and ranks by a continuous crypticity score (opening x druggability-when-open). Validated on three independent datasets: 59% recall on a curated apo/holo set (13/22), 62% on PocketMiner (28/45), and 49% on CryptoBench (88/180), the largest and most diverse benchmark. Outputs docking-ready Boltz YAML, AutoDock Vina configs, and PDB files with hotspot-centered pocket localization."
@@ -14,22 +30,6 @@ projects:
       - name: "Structural Biology"
         icon: "fas fa-dna"
         color: "#27AE60"
-
-  - id: 2
-    name: "HelixDB"
-    url: "https://github.com/mooreneural/HelixDB"
-    description: "AI-native biomolecular storage format (.ptt) for structural biology ML. Converts a structure or a raw sequence once and caches every tensor training needs - atomic coordinates, backbone geometry, bond graphs, MSA alignments, ESM2/ESM3 embeddings, pair features, and ligands - in a single Zarr/LZ4 container with memory-mapped lazy access. On a 76-3,525 residue benchmark: 2-95x faster full loads and up to ~250x backbone-only loads vs re-parsing mmCIF, ~4x faster full feature assembly, and MSAs cached once instead of re-parsed every epoch. Verified end-to-end on Boltz 2. PyTorch/JAX/NumPy, streams from S3/GCS. MIT-licensed."
-    role: "Developer"
-    languages:
-      - name: "Python"
-        icon: "fab fa-python"
-        color: "#3776AB"
-      - name: "Zarr"
-        icon: "fas fa-database"
-        color: "#E67E22"
-      - name: "CUDA"
-        icon: "fas fa-microchip"
-        color: "#76B900"
 
 # Configuration options
 config:
