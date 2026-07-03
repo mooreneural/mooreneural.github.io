@@ -1,7 +1,7 @@
 projects:
   - id: 1
-    name: "HelixDB / ProteinTensor"
-    url: "https://github.com/mooreneural/HelixDB"
+    name: "ProteinTensor"
+    url: "https://github.com/mooreneural/ProteinTensor"
     description: "AI-native biomolecular storage format (.ptt) for structural biology ML. Converts a structure or a raw sequence once and caches every tensor training needs - atomic coordinates, backbone geometry, bond graphs, MSA alignments, ESM2/ESM3 embeddings, pair features, and ligands - in a single Zarr/LZ4 container with memory-mapped lazy access. On a 76-3,525 residue benchmark: 2-95x faster full loads and up to ~250x backbone-only loads vs re-parsing mmCIF, ~4x faster full feature assembly, and MSAs cached once instead of re-parsed every epoch. Verified end-to-end on Boltz 2. PyTorch/JAX/NumPy, streams from S3/GCS. MIT-licensed."
     role: "Developer"
     languages:
