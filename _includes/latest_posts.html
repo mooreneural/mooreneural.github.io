@@ -2,33 +2,32 @@
           <div class="news">
             {% if site.latest_posts != blank -%}
             {%- assign latest_posts_size = site.posts | size -%}
-            <div class="table-responsive" {% if site.latest_posts.scrollable and latest_posts_size > 3 %}style="max-height: 60vw"{% endif %}>
-              <table class="table table-sm table-borderless">
-              {%- assign latest_posts = site.posts -%}
-              {% if site.latest_posts.limit %}
-              {% assign latest_posts_limit = site.latest_posts.limit %}
-              {% else %}
-              {% assign latest_posts_limit = latest_posts_size %}
-              {% endif %}
-              {% for item in latest_posts limit: latest_posts_limit %}
-                <tr>
-                  <th scope="row">{{ item.date | date: "%b %-d, %Y" }}</th>
-                  <td>
-                    {% if item.redirect == blank %}
-                      <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
-                    {% elsif item.redirect contains '://' %}
-                      <a class="news-title" href="{{ item.redirect }}" target="_blank">{{ item.title }}</a>
-                      <svg width="2rem" height="2rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
-                      </svg>
-                    {% else %}
-                      <a class="news-title" href="{{ item.redirect | relative_url }}">{{ item.title }}</a>
-                    {% endif %}
-                  </td>
-                </tr>
-              {%- endfor %}
-              </table>
-            </div>
+            {%- assign latest_posts = site.posts -%}
+            {% if site.latest_posts.limit %}
+            {% assign latest_posts_limit = site.latest_posts.limit %}
+            {% else %}
+            {% assign latest_posts_limit = latest_posts_size %}
+            {% endif %}
+            {% for item in latest_posts limit: latest_posts_limit %}
+              <div style="padding: 0.75rem 0; border-bottom: 1px solid var(--global-divider-color);">
+                <div style="font-size: 0.78rem; color: var(--global-text-color-light); font-family: monospace; margin-bottom: 0.3rem;">
+                  {{ item.date | date: "%b %-d, %Y" }}
+                  {%- if item.source == "x" %}
+                    &nbsp;·&nbsp;<a href="{{ item.source_url }}" target="_blank" rel="noopener noreferrer" style="color: var(--global-text-color-light); text-decoration: none;">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:0.85em;height:0.85em;vertical-align:-0.1em;fill:currentColor;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.736l7.73-8.835L1.254 2.25H8.08l4.713 6.057zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                      x.com
+                    </a>
+                  {%- elsif item.source == "linkedin" %}
+                    &nbsp;·&nbsp;<a href="{{ item.source_url }}" target="_blank" rel="noopener noreferrer" style="color: var(--global-text-color-light); text-decoration: none;">
+                      <i class="fab fa-linkedin" style="font-size:0.85em;"></i> linkedin
+                    </a>
+                  {%- endif %}
+                </div>
+                <div style="font-size: 0.88rem; color: var(--global-text-color); line-height: 1.55;">
+                  {{ item.content | remove: '<p>' | remove: '</p>' | strip_html | truncatewords: 60 }}
+                </div>
+              </div>
+            {%- endfor %}
           {%- else -%}
             <p style="color: #888; font-style: italic; font-size: 0.9rem;">⏳ Uploading posts. Updates coming end of month.</p>
           {%- endif %}
