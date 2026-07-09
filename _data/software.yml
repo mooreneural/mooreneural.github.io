@@ -3,7 +3,7 @@ projects:
     name: "ProteinTensor"
     url: "https://github.com/mooreneural/ProteinTensor"
     status: "in development"
-    description: "AI-native biomolecular storage format (.ptt) for structural biology ML. Converts a structure or a raw sequence once and caches every tensor training needs - atomic coordinates, backbone geometry, bond graphs, MSA alignments, ESM2/ESM3 embeddings, pair features, and ligands - in a single Zarr/LZ4 container with memory-mapped lazy access. On a 76-3,525 residue benchmark: 2-95x faster full loads and up to ~250x backbone-only loads vs re-parsing mmCIF, ~4x faster full feature assembly, and MSAs cached once instead of re-parsed every epoch. Verified end-to-end on Boltz 2. PyTorch/JAX/NumPy, streams from S3/GCS. MIT-licensed."
+    description: "AI-native biomolecular storage format (.ptt) for structural biology ML. Converts a structure or raw sequence once and caches every training tensor - atomic coordinates, backbone geometry, bond graphs, MSA alignments, ESM2/ESM3 embeddings, dense or sparse pair features, and ligands - in a single Zarr/LZ4 container with memory-mapped lazy access and S3/GCS streaming. Verified end-to-end with Boltz-2. On a 76-3,525 residue benchmark: 2-95x faster full loads, up to ~250x backbone-only loads vs re-parsing mmCIF, ~4x faster full feature assembly, and up to ~75x smaller pair storage via sparse radius graphs. PyTorch / JAX / NumPy."
     role: "Developer"
     languages:
       - name: "Python"
@@ -12,9 +12,12 @@ projects:
       - name: "Zarr"
         icon: "fas fa-database"
         color: "#E67E22"
-      - name: "CUDA"
-        icon: "fas fa-microchip"
-        color: "#76B900"
+      - name: "PyTorch/JAX"
+        icon: "fas fa-brain"
+        color: "#EE4C2C"
+      - name: "NumPy"
+        icon: "fas fa-calculator"
+        color: "#4DABCF"
 
   - id: 2
     name: "lacuna"
