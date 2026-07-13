@@ -126,6 +126,34 @@ html[data-theme='dark'] .contrib-status {
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
+        <a href="https://github.com/google-deepmind/alphafold3/pull/692" target="_blank" rel="noopener noreferrer">
+          Fix templateIndices serialization crash for empty query_to_template_map
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/google-deepmind/alphafold3" target="_blank" rel="noopener noreferrer">google-deepmind/alphafold3</a>
+        <a class="contrib-company" href="https://deepmind.google" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> Google DeepMind
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Fixed a crash in <code>folding_input.py</code> where serializing a <code>ProteinChain</code> with an empty
+        <code>query_to_template_map</code> caused a <code>TypeError</code> on deserialization. The <code>list(values) or None</code>
+        pattern was converting empty lists to null, which then broke <code>zip(queryIndices, None)</code>. Removed the
+        <code>or None</code> clause so empty template maps serialize as <code>[]</code>, consistent with how
+        <code>queryIndices</code> is already handled. Merged by Augustin Zidek.
+        <a href="https://github.com/google-deepmind/alphafold3/commit/62136ec757e10049c0c18ad04fd10dbdaa56e3dd" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">62136ec</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
+      <div class="contrib-date">Jul 2026</div>
+      <div class="contrib-status">merged</div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
         <a href="https://github.com/google-deepmind/alphafold3/pull/674" target="_blank" rel="noopener noreferrer">
           Replace two-einsum OuterProductMean with fused three-way einsum
         </a>
