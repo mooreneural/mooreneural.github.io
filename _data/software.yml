@@ -3,7 +3,7 @@ projects:
     name: "ProteinTensor"
     url: "https://github.com/mooreneural/ProteinTensor"
     status: "in development"
-    description: "AI-native biomolecular storage format (.ptt) for structural biology ML. Converts a structure or raw sequence once and caches every training tensor - atomic coordinates, backbone geometry, bond graphs, MSA alignments, ESM2/ESM3 embeddings, dense or sparse pair features, and ligands - in a single Zarr/LZ4 container with memory-mapped lazy access and S3/GCS streaming. Verified end-to-end with Boltz-2. On a 76-3,525 residue benchmark: 2-95x faster full loads, up to ~250x backbone-only loads vs re-parsing mmCIF, ~4x faster full feature assembly, and up to ~75x smaller pair storage via sparse radius graphs. PyTorch / JAX / NumPy."
+    description: "AI-native biomolecular storage format (.ptt) for structural biology ML. Converts a protein, nucleic-acid, or protein-ligand structure - or a raw sequence - once and caches every training tensor: atomic coordinates, backbone geometry, bond graphs, MSA alignments, ESM2/ESM3 embeddings, dense or sparse pair features, and ligands with binding-site pockets - in a single Zarr/LZ4 container with memory-mapped lazy access and S3/GCS streaming. Generates native inputs for Boltz-2 (verified end-to-end), AlphaFold 3, Chai-1, OpenFold, and Nesso. On a 76-3,525 residue benchmark: 2-95x faster full loads, up to ~250x backbone-only loads vs re-parsing mmCIF, ~4x faster full feature assembly, and up to ~75x smaller pair storage via sparse radius graphs. PyTorch / JAX / NumPy."
     role: "Developer"
     languages:
       - name: "Python"
