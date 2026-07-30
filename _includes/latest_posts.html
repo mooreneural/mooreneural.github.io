@@ -21,6 +21,10 @@
                     &nbsp;·&nbsp;<a href="{{ item.source_url }}" target="_blank" rel="noopener noreferrer" style="color: var(--global-text-color-light); text-decoration: none;">
                       <i class="fab fa-linkedin" style="font-size:0.85em;"></i> linkedin
                     </a>
+                  {%- elsif item.source == "github" %}
+                    &nbsp;·&nbsp;<a href="{{ item.source_url }}" target="_blank" rel="noopener noreferrer" style="color: var(--global-text-color-light); text-decoration: none;">
+                      <i class="fab fa-github" style="font-size:0.85em;"></i> github
+                    </a>
                   {%- endif %}
                 </div>
                 <div style="font-size: 0.88rem; color: var(--global-text-color); line-height: 1.55;">
