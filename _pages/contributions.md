@@ -56,6 +56,26 @@ html[data-theme='dark'] .contrib-status {
   border-color: #388e3c;
 }
 
+.contrib-status-review {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  background: #e3f2fd;
+  color: #1565c0;
+  border: 1px solid #90caf9;
+}
+
+html[data-theme='dark'] .contrib-status-review {
+  background: #0d2137;
+  color: #64b5f6;
+  border-color: #1565c0;
+}
+
 .contrib-body {
   flex: 1;
 }
@@ -126,6 +146,33 @@ html[data-theme='dark'] .contrib-status {
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
+        <a href="https://github.com/google-deepmind/alphafold3/pull/674" target="_blank" rel="noopener noreferrer">
+          Replace two-einsum OuterProductMean with fused three-way einsum
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/google-deepmind/alphafold3" target="_blank" rel="noopener noreferrer">google-deepmind/alphafold3</a>
+        <a class="contrib-company" href="https://deepmind.google" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> Google DeepMind
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Replaced two sequential einsum operations in OuterProductMean with a single fused three-way einsum,
+        reducing peak intermediate tensor memory from ~256 MB to ~72 MB (3.56x reduction) with no throughput
+        regression. Outputs verified numerically identical on an RTX 5080. Merged by Augustin Zidek; included in
+        <a href="https://github.com/google-deepmind/alphafold3/releases/tag/v3.0.4" target="_blank" rel="noopener noreferrer">v3.0.4 release notes</a>.
+        <a href="https://github.com/google-deepmind/alphafold3/commit/7b4c2a532f38683071f718cdb8103383755d9f15" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">7b4c2a5</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
+      <div class="contrib-date">Jul 2026</div>
+      <div class="contrib-status">merged</div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
         <a href="https://github.com/google-deepmind/alphafold3/pull/692" target="_blank" rel="noopener noreferrer">
           Fix templateIndices serialization crash for empty query_to_template_map
         </a>
@@ -143,33 +190,6 @@ html[data-theme='dark'] .contrib-status {
         <code>or None</code> clause so empty template maps serialize as <code>[]</code>, consistent with how
         <code>queryIndices</code> is already handled. Merged by Augustin Zidek.
         <a href="https://github.com/google-deepmind/alphafold3/commit/62136ec757e10049c0c18ad04fd10dbdaa56e3dd" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">62136ec</a>
-      </p>
-    </div>
-  </div>
-
-  <div class="contrib-item">
-    <div class="contrib-meta">
-      <div class="contrib-date">Jul 2026</div>
-      <div class="contrib-status">merged</div>
-    </div>
-    <div class="contrib-body">
-      <div class="contrib-title">
-        <a href="https://github.com/google-deepmind/alphafold3/pull/674" target="_blank" rel="noopener noreferrer">
-          Replace two-einsum OuterProductMean with fused three-way einsum
-        </a>
-      </div>
-      <div class="contrib-repo">
-        <a href="https://github.com/google-deepmind/alphafold3" target="_blank" rel="noopener noreferrer">google-deepmind/alphafold3</a>
-        <a class="contrib-company" href="https://deepmind.google" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-building" style="font-size: 0.65rem;"></i> Google DeepMind
-        </a>
-      </div>
-      <p class="contrib-desc">
-        Replaced two sequential einsum operations in OuterProductMean with a single fused three-way einsum,
-        reducing peak intermediate tensor memory from ~256 MB to ~72 MB (3.56x reduction) with no throughput
-        regression. Outputs verified numerically identical on an RTX 5080. Merged by Augustin Zidek with
-        acknowledgment in planned v3.0.4 release notes.
-        <a href="https://github.com/google-deepmind/alphafold3/commit/7b4c2a532f38683071f718cdb8103383755d9f15" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">7b4c2a5</a>
       </p>
     </div>
   </div>
