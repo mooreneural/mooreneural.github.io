@@ -161,7 +161,7 @@ html[data-theme='dark'] .contrib-status-review {
         training featurizer but never read by the inference forward pass, along with the
         <code>_compute_disto_target</code> helper (~40 lines). Added a regression test asserting the exact set of
         expected featurizer output keys. On an RTX 5080: GPU memory reduced from 155.1 to 16.8 MiB (~9x smaller),
-        host-to-device copy time from ~9.8 to ~1.3 ms per batch (~7x faster). Merged by @shenoynikhil.
+        host-to-device copy time from ~9.8 to ~1.3 ms per batch (~7x faster). Merged by <a href="https://github.com/shenoynikhil" target="_blank" rel="noopener noreferrer">Nikhil Shenoy</a>.
       </p>
     </div>
   </div>
@@ -186,7 +186,7 @@ html[data-theme='dark'] .contrib-status-review {
       <p class="contrib-desc">
         Replaced two sequential einsum operations in OuterProductMean with a single fused three-way einsum,
         reducing peak intermediate tensor memory from ~256 MB to ~72 MB (3.56x reduction) with no throughput
-        regression. Outputs verified numerically identical on an RTX 5080. Merged by Augustin Zidek; included in
+        regression. Outputs verified numerically identical on an RTX 5080. Merged by <a href="https://github.com/Augustin-Zidek" target="_blank" rel="noopener noreferrer">Augustin Zidek</a>; included in
         <a href="https://github.com/google-deepmind/alphafold3/releases/tag/v3.0.4" target="_blank" rel="noopener noreferrer">v3.0.4 release notes</a>.
         <a href="https://github.com/google-deepmind/alphafold3/commit/7b4c2a532f38683071f718cdb8103383755d9f15" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">7b4c2a5</a>
       </p>
@@ -215,7 +215,7 @@ html[data-theme='dark'] .contrib-status-review {
         <code>query_to_template_map</code> caused a <code>TypeError</code> on deserialization. The <code>list(values) or None</code>
         pattern was converting empty lists to null, which then broke <code>zip(queryIndices, None)</code>. Removed the
         <code>or None</code> clause so empty template maps serialize as <code>[]</code>, consistent with how
-        <code>queryIndices</code> is already handled. Merged by Augustin Zidek.
+        <code>queryIndices</code> is already handled. Merged by <a href="https://github.com/Augustin-Zidek" target="_blank" rel="noopener noreferrer">Augustin Zidek</a>.
         <a href="https://github.com/google-deepmind/alphafold3/commit/62136ec757e10049c0c18ad04fd10dbdaa56e3dd" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">62136ec</a>
       </p>
     </div>
