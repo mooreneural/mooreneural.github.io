@@ -141,6 +141,33 @@ html[data-theme='dark'] .contrib-status-review {
 
   <div class="contrib-item">
     <div class="contrib-meta">
+      <div class="contrib-date">Aug 2026</div>
+      <div class="contrib-status">merged</div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
+        <a href="https://github.com/recursionpharma/nesso/pull/3" target="_blank" rel="noopener noreferrer">
+          Drop training-only targets unused by inference forward pass
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/recursionpharma/nesso" target="_blank" rel="noopener noreferrer">recursionpharma/nesso</a>
+        <a class="contrib-company" href="https://www.valencelabs.com/" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> Valence Labs
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Removed two unused tensors (<code>disto_target</code> and <code>token_to_rep_atom</code>) inherited from a
+        training featurizer but never read by the inference forward pass, along with the
+        <code>_compute_disto_target</code> helper (~40 lines). Added a regression test asserting the exact set of
+        expected featurizer output keys. On an RTX 5080: GPU memory reduced from 155.1 to 16.8 MiB (~9x smaller),
+        host-to-device copy time from ~9.8 to ~1.3 ms per batch (~7x faster). Merged by @shenoynikhil.
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
       <div class="contrib-date">Jul 2026</div>
       <div class="contrib-status">merged</div>
     </div>
