@@ -146,6 +146,35 @@ html[data-theme='dark'] .contrib-status-review {
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
+        <a href="https://github.com/google-deepmind/alphafold3/pull/710" target="_blank" rel="noopener noreferrer">
+          Fix loading input JSON written by AlphaFold 3 &lt;= 3.0.3
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/google-deepmind/alphafold3" target="_blank" rel="noopener noreferrer">google-deepmind/alphafold3</a>
+        <a class="contrib-company" href="https://deepmind.google" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> Google DeepMind
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Restored backwards compatibility for input JSON written by AlphaFold 3 versions 3.0.0 through 3.0.3, which
+        serialized empty template maps as <code>"templateIndices": null</code> and caused a <code>TypeError</code> when
+        loaded in 3.0.4. Null values are now read as empty maps rather than passed directly to <code>zip()</code>.
+        Also added <code>strict=True</code> to the zip call so mismatched <code>queryIndices</code> and
+        <code>templateIndices</code> lengths raise instead of silently truncating. Merged with a refactor by
+        <a href="https://github.com/Augustin-Zidek" target="_blank" rel="noopener noreferrer">Augustin Zidek</a>.
+        <a href="https://github.com/google-deepmind/alphafold3/commit/25461454b174c2a21f509554c086bd3c26e8e06a" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">2546145</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
+      <div class="contrib-date">Aug 2026</div>
+      <div class="contrib-status">merged</div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
         <a href="https://github.com/recursionpharma/nesso/pull/3" target="_blank" rel="noopener noreferrer">
           Drop training-only targets unused by inference forward pass
         </a>
