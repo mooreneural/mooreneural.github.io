@@ -1,5 +1,22 @@
 projects:
   - id: 1
+    name: "lacuna"
+    url: "https://github.com/mooreneural/lacuna"
+    status: "in development"
+    description: "Python tool for cryptic binding pocket discovery. Generates conformational ensembles (NMA by default; optional OpenMM implicit-solvent MD and Boltz-2 diffusion sampling), detects pockets per conformer, clusters them across the ensemble, and ranks them with a learned model over 23 geometric and ensemble-derived features, with an optional ESM-2 sequence ranker. Evaluated with a size-robust (Jaccard >= 0.25) protocol on four independent datasets: 56% recovery on CryptoBench's held-out test fold (n=180, the largest and most diverse), rising to 66% with the sequence ranker; 73% on PocketMiner (33/45); 45% on a curated apo/holo set (10/22); and 87% on COACH420 general binding sites (125/144). CryptoBench follows the dataset's own homology-separated folds with the ranker fitted on train folds only, so the test fold is genuinely unseen. Outputs docking-ready Boltz YAML constraints, AutoDock Vina configs, and pseudoatom PDB files with hotspot-centered pocket localization. MIT licensed; v1.0.0 on PyPI as lacuna-pockets."
+    role: "Developer"
+    languages:
+      - name: "Python"
+        icon: "fab fa-python"
+        color: "#3776AB"
+      - name: "Boltz-2"
+        icon: "fas fa-atom"
+        color: "#E74C3C"
+      - name: "Structural Biology"
+        icon: "fas fa-dna"
+        color: "#27AE60"
+
+  - id: 2
     name: "ProteinTensor"
     url: "https://github.com/mooreneural/ProteinTensor"
     status: "in development"
@@ -18,23 +35,6 @@ projects:
       - name: "NumPy"
         icon: "fas fa-calculator"
         color: "#4DABCF"
-
-  - id: 2
-    name: "lacuna"
-    url: "https://github.com/mooreneural/lacuna"
-    status: "in development"
-    description: "Python tool for cryptic binding pocket discovery. Generates conformational ensembles (NMA by default; optional OpenMM implicit-solvent MD and Boltz-2 diffusion sampling), detects pockets per conformer, clusters them across the ensemble, and ranks by a continuous crypticity score (opening x druggability-when-open). Evaluated with a size-robust (Jaccard-based) protocol on three independent datasets: 32% recovery on a curated apo/holo set (7/22), 31% on PocketMiner (14/45), and 18% on CryptoBench (32/180), the largest and most diverse benchmark; results hold on 749 held-out structures never used in tuning. Outputs docking-ready Boltz YAML, AutoDock Vina configs, and pseudoatom PDB files with hotspot-centered pocket localization."
-    role: "Developer"
-    languages:
-      - name: "Python"
-        icon: "fab fa-python"
-        color: "#3776AB"
-      - name: "Boltz-2"
-        icon: "fas fa-atom"
-        color: "#E74C3C"
-      - name: "Structural Biology"
-        icon: "fas fa-dna"
-        color: "#27AE60"
 
 # Configuration options
 config:
