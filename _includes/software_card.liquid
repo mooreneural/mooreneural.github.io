@@ -35,12 +35,24 @@
   }
 
   .sw-status {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+  }
+
+  html[data-theme='dark'] .sw-status {
+    background: #1b3a1f;
+    color: #81c784;
+    border-color: #388e3c;
+  }
+
+  .sw-status-dev {
     background: #fff8e1;
     color: #e65100;
     border: 1px solid #ffcc80;
   }
 
-  html[data-theme='dark'] .sw-status {
+  html[data-theme='dark'] .sw-status-dev {
     background: #3a2200;
     color: #ffb74d;
     border-color: #e65100;
@@ -140,7 +152,8 @@
 
 <div class="sw-item">
   <div class="sw-meta">
-    <span class="sw-status">{{ include.project.status | default: "software" }}</span>
+    {%- assign sw_status = include.project.status | default: "software" -%}
+    <span class="sw-status{% if sw_status contains 'development' %} sw-status-dev{% endif %}">{{ sw_status }}</span>
     {% if include.project.private %}
     <span class="sw-private">private</span>
     {% endif %}
