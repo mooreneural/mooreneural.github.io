@@ -2,7 +2,7 @@
 layout: page
 permalink: /publications/
 title: publications
-description: preprints, software archives, and conference work
+description: preprints and peer-reviewed publications
 nav: true
 nav_order: 2
 ---
