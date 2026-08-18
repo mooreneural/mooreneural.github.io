@@ -46,6 +46,18 @@
     border-color: #388e3c;
   }
 
+  .bib-status-preprint {
+    background: #fff8e1;
+    color: #e65100;
+    border: 1px solid #ffcc80;
+  }
+
+  html[data-theme='dark'] .bib-status-preprint {
+    background: #3a2200;
+    color: #ffb74d;
+    border-color: #e65100;
+  }
+
   .bib-body {
     flex: 1;
     min-width: 0;
@@ -136,7 +148,8 @@
 <div class="bib-item">
   <div class="bib-meta">
     <div class="bib-year">{{ entry.year }}</div>
-    <div class="bib-status">published</div>
+    {%- assign bib_status = entry.abbr | default: "published" -%}
+    <div class="bib-status{% if bib_status == 'preprint' %} bib-status-preprint{% endif %}">{{ bib_status }}</div>
   </div>
 
   <div class="bib-body">

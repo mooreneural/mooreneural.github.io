@@ -2,8 +2,8 @@
 layout: page
 permalink: /publications/
 title: publications
-description: A complete list can be found on my <a href='https://scholar.google.com/citations?user=EW4ex6UAAAAJ&hl=en'>Google Scholar</a> profile.
-nav: false
+description: preprints, software archives, and conference work
+nav: true
 nav_order: 2
 ---
 <!-- _pages/publications.md -->
