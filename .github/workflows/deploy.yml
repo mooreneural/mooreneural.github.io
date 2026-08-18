@@ -11,6 +11,12 @@ on:
       - main
   workflow_dispatch:
 
+# Deploys force-push the built site to gh-pages. Without this, two overlapping
+# runs can finish out of order and an older build can clobber a newer one.
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
