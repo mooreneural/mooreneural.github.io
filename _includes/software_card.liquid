@@ -148,6 +148,31 @@
     letter-spacing: 0.01em;
     white-space: nowrap;
   }
+
+  .sw-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: 0.1rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .sw-links a {
+    font-size: 0.68rem;
+    font-weight: 500;
+    padding: 0.18rem 0.5rem;
+    border-radius: 3px;
+    border: 1.5px solid var(--global-divider-color);
+    color: var(--global-text-color-light);
+    text-decoration: none;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .sw-links a:hover {
+    border-color: var(--global-text-color);
+    color: var(--global-text-color);
+    text-decoration: none;
+  }
 </style>
 
 <div class="sw-item">
@@ -175,6 +200,17 @@
     {% endif %}
 
     <p class="sw-desc">{{ include.project.description }}</p>
+
+    {% if include.project.links %}
+    <div class="sw-links">
+      {% for link in include.project.links %}
+      <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
+        {%- if link.icon %}<i class="{{ link.icon }}" style="margin-right: 4px;"></i>{% endif -%}
+        {{ link.name }}
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
 
     {% if include.project.languages %}
     <div class="sw-badges">
