@@ -6,6 +6,9 @@ projects:
     description: "Python tool for cryptic binding pocket discovery. Generates conformational ensembles (NMA by default; optional OpenMM implicit-solvent MD and Boltz-2 diffusion sampling), detects pockets per conformer, clusters them across the ensemble, and ranks them with a learned model over 23 geometric and ensemble-derived features, with an optional PLM-assisted ranker. Evaluated with a size-robust (Jaccard ≥ 0.25) protocol on four independent datasets: 56% recovery on CryptoBench's designated test fold (n=180, the largest and most diverse), rising to 66% with the PLM-assisted ranker; 73% on PocketMiner (33/45); 45% on a curated apo/holo set (10/22); and 87% on COACH420 general binding sites (125/144). CryptoBench follows the dataset's own homology-separated folds, with the ranker's coefficients fitted on the train folds only. Outputs docking-ready Boltz YAML constraints, AutoDock Vina configs, and pseudoatom PDB files with hotspot-centered pocket localization. MIT licensed; v1.0.1 on PyPI as lacuna-pockets. Paper: doi:10.64898/2026.08.14.744956; accompanying analysis: doi:10.64898/2026.08.11.743381."
     role: "Developer"
     links:
+      - name: "Run on Tamarind"
+        url: "https://app.tamarind.bio/tools/lacuna"
+        icon: "fas fa-server"
       - name: "Run on Neurosnap"
         url: "https://neurosnap.ai/service/Lacuna%20Cryptic%20Pocket%20Discovery"
         icon: "fas fa-server"
