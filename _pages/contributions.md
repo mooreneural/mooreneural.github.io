@@ -141,6 +141,35 @@ html[data-theme='dark'] .contrib-status-review {
 
   <div class="contrib-item">
     <div class="contrib-meta">
+      <div class="contrib-date">Sep 2026</div>
+      <div class="contrib-status">merged</div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
+        <a href="https://github.com/google-deepmind/alphafold3/pull/721" target="_blank" rel="noopener noreferrer">
+          Document the measured effect of the JAX compilation cache
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/google-deepmind/alphafold3" target="_blank" rel="noopener noreferrer">google-deepmind/alphafold3</a>
+        <a class="contrib-company" href="https://deepmind.google" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> Google DeepMind
+        </a>
+      </div>
+      <p class="contrib-desc">
+        The performance docs said the JAX persistent compilation cache avoids recompilation between runs, but gave
+        no measured effect. Benchmarked it on an RTX 5080: subsequent runs drop from ~143-148 s to ~32 s with the
+        cache enabled, and cached runs are bit-identical (0.000000 &Aring; difference) where uncached runs vary by
+        ~0.131 &Aring; RMSD. Wording kept deliberately non-specific since measurements came from a single machine.
+        Adapted into <code>docs/performance.md</code> by
+        <a href="https://github.com/Augustin-Zidek" target="_blank" rel="noopener noreferrer">Augustin Zidek</a>.
+        <a href="https://github.com/google-deepmind/alphafold3/commit/a66cc5226d5fbcf7b08af4495af6fd7262178e38" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">a66cc52</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
       <div class="contrib-date">Aug 2026</div>
       <div class="contrib-status">merged</div>
     </div>
