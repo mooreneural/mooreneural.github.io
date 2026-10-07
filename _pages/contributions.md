@@ -144,12 +144,12 @@ html[data-theme='dark'] .contrib-status-review {
 }
 
 .contrib-tile {
-  aspect-ratio: 1 / 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 0.35rem;
   min-width: 0;
-  padding: 0.8rem;
+  padding: 0.6rem 0.75rem;
   border: 1px solid var(--global-divider-color);
   border-radius: 6px;
   background: var(--global-bg-color);
@@ -157,10 +157,6 @@ html[data-theme='dark'] .contrib-status-review {
   text-align: left;
   font: inherit;
   transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
-}
-
-.contrib-tile.is-wide {
-  aspect-ratio: auto;
 }
 
 button.contrib-tile {
@@ -190,7 +186,7 @@ button.contrib-tile.is-active {
 }
 
 .contrib-tile-count {
-  font-size: 2.2rem;
+  font-size: 1.9rem;
   font-weight: 700;
   line-height: 1;
   font-variant-numeric: tabular-nums;
@@ -652,7 +648,6 @@ button.contrib-tile.is-active {
     }
     statsEl.style.gridTemplateColumns = 'repeat(' + best.cols + ', minmax(0, 1fr))';
     heroTile.style.gridColumn = 'span ' + (1 + best.gap);
-    heroTile.classList.toggle('is-wide', best.gap > 0);
   }
   layout();
   var resizeTimer;
