@@ -135,7 +135,109 @@ html[data-theme='dark'] .contrib-status-review {
   line-height: 1.55;
   margin: 0;
 }
+
+.contrib-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+
+.contrib-tile {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.75rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  background: var(--global-bg-color);
+  color: var(--global-text-color);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+
+.contrib-tile:hover {
+  border-color: var(--global-theme-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.contrib-tile:focus-visible {
+  outline: 2px solid var(--global-theme-color);
+  outline-offset: 2px;
+}
+
+.contrib-tile.is-active {
+  border-color: var(--global-theme-color);
+  box-shadow: inset 0 0 0 1px var(--global-theme-color);
+}
+
+.contrib-tile-total {
+  background: var(--global-theme-color);
+  border-color: var(--global-theme-color);
+  color: #fff;
+  cursor: default;
+}
+
+.contrib-tile-total:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.contrib-tile-count {
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.contrib-tile-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.contrib-tile-repos {
+  font-size: 0.66rem;
+  font-family: monospace;
+  color: var(--global-text-color-light);
+  line-height: 1.3;
+  margin-top: 0.2rem;
+  overflow-wrap: anywhere;
+}
+
+.contrib-tile-total .contrib-tile-repos {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.contrib-filter-note {
+  font-size: 0.75rem;
+  color: var(--global-text-color-light);
+  margin-top: 0.6rem;
+  min-height: 1.1em;
+}
+
+.contrib-filter-note button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--global-theme-color);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.contrib-item.is-hidden {
+  display: none;
+}
 </style>
+
+<div class="contrib-stats" id="contrib-stats" aria-label="Merged contributions by organization"></div>
+<div class="contrib-filter-note" id="contrib-filter-note" aria-live="polite"></div>
 
 <div class="contrib-list">
 
@@ -470,3 +572,116 @@ html[data-theme='dark'] .contrib-status-review {
   </div>
 
 </div>
+
+<script>
+(function () {
+  var statsEl = document.getElementById('contrib-stats');
+  var noteEl = document.getElementById('contrib-filter-note');
+  if (!statsEl) return;
+
+  // Only merged entries count toward the totals.
+  var items = Array.prototype.slice.call(document.querySelectorAll('.contrib-item'));
+  var groups = {};
+  var order = [];
+  var total = 0;
+
+  items.forEach(function (item) {
+    var status = item.querySelector('.contrib-status');
+    if (!status || status.textContent.trim().toLowerCase() !== 'merged') return;
+    var orgEl = item.querySelector('.contrib-company');
+    var repoEl = item.querySelector('.contrib-repo > a');
+    var org = orgEl ? orgEl.textContent.trim() : 'Other';
+    var repo = repoEl ? repoEl.textContent.trim().split('/').pop() : '';
+    item.setAttribute('data-org', org);
+    if (!groups[org]) { groups[org] = { count: 0, repos: [] }; order.push(org); }
+    groups[org].count += 1;
+    if (repo && groups[org].repos.indexOf(repo) === -1) groups[org].repos.push(repo);
+    total += 1;
+  });
+
+  if (!total) return;
+
+  order.sort(function (a, b) { return groups[b].count - groups[a].count; });
+
+  function tile(count, name, repos, isTotal) {
+    var el = document.createElement(isTotal ? 'div' : 'button');
+    el.className = 'contrib-tile' + (isTotal ? ' contrib-tile-total' : '');
+    if (!isTotal) {
+      el.type = 'button';
+      el.setAttribute('data-org', name);
+      el.setAttribute('aria-pressed', 'false');
+      el.setAttribute('aria-label', count + ' merged contribution' + (count === 1 ? '' : 's') + ' to ' + name + '. Click to filter.');
+    }
+    var c = document.createElement('div');
+    c.className = 'contrib-tile-count';
+    c.setAttribute('data-target', count);
+    c.textContent = count;
+    var label = document.createElement('div');
+    var n = document.createElement('div');
+    n.className = 'contrib-tile-name';
+    n.textContent = name;
+    var r = document.createElement('div');
+    r.className = 'contrib-tile-repos';
+    r.textContent = repos;
+    label.appendChild(n);
+    label.appendChild(r);
+    el.appendChild(c);
+    el.appendChild(label);
+    return el;
+  }
+
+  statsEl.appendChild(tile(total, 'merged contributions', order.length + ' organizations', true));
+  order.forEach(function (org) {
+    statsEl.appendChild(tile(groups[org].count, org, groups[org].repos.join(', '), false));
+  });
+
+  // Count-up on load, skipped for reduced motion.
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
+    var counters = statsEl.querySelectorAll('.contrib-tile-count');
+    var start = null;
+    var duration = 700;
+    Array.prototype.forEach.call(counters, function (el) { el.textContent = '0'; });
+    var step = function (ts) {
+      if (start === null) start = ts;
+      var t = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - t, 3);
+      Array.prototype.forEach.call(counters, function (el) {
+        el.textContent = Math.round(eased * Number(el.getAttribute('data-target')));
+      });
+      if (t < 1) window.requestAnimationFrame(step);
+    };
+    window.requestAnimationFrame(step);
+  }
+
+  // Click a tile to filter the list; click again (or "show all") to clear.
+  var active = null;
+  function applyFilter(org) {
+    active = org;
+    items.forEach(function (item) {
+      var hide = org !== null && item.getAttribute('data-org') !== org;
+      item.classList.toggle('is-hidden', hide);
+    });
+    Array.prototype.forEach.call(statsEl.querySelectorAll('button.contrib-tile'), function (b) {
+      var on = b.getAttribute('data-org') === org;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    noteEl.innerHTML = '';
+    if (org !== null) {
+      noteEl.appendChild(document.createTextNode('Showing ' + org + ' only. '));
+      var clear = document.createElement('button');
+      clear.type = 'button';
+      clear.textContent = 'Show all';
+      clear.addEventListener('click', function () { applyFilter(null); });
+      noteEl.appendChild(clear);
+    }
+  }
+  statsEl.addEventListener('click', function (e) {
+    var b = e.target.closest('button.contrib-tile');
+    if (!b) return;
+    var org = b.getAttribute('data-org');
+    applyFilter(active === org ? null : org);
+  });
+})();
+</script>
