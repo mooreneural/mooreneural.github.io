@@ -76,26 +76,6 @@ html[data-theme='dark'] .contrib-status-review {
   border-color: #1565c0;
 }
 
-.contrib-status-adopted {
-  display: inline-block;
-  margin-top: 0.3rem;
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 0.15rem 0.4rem;
-  border-radius: 3px;
-  background: #ede7f6;
-  color: #5e35b1;
-  border: 1px solid #b39ddb;
-}
-
-html[data-theme='dark'] .contrib-status-adopted {
-  background: #221a33;
-  color: #b39ddb;
-  border-color: #5e35b1;
-}
-
 .contrib-body {
   flex: 1;
 }
