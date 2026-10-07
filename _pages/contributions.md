@@ -185,6 +185,23 @@ button.contrib-tile.is-active {
   color: #fff;
 }
 
+.contrib-tile-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.contrib-tile-logo {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid var(--global-divider-color);
+}
+
 .contrib-tile-count {
   font-size: 1.9rem;
   font-weight: 700;
@@ -589,8 +606,9 @@ button.contrib-tile.is-active {
     var repoEl = item.querySelector('.contrib-repo > a');
     var org = orgEl ? orgEl.textContent.trim() : 'Other';
     var repoName = repoEl ? repoEl.textContent.trim().split('/').pop() : '';
+    var ownerMatch = repoEl ? /github\.com\/([^\/]+)/.exec(repoEl.getAttribute('href') || '') : null;
     item.setAttribute('data-org', org);
-    if (!groups[org]) { groups[org] = { count: 0, repos: [] }; order.push(org); }
+    if (!groups[org]) { groups[org] = { count: 0, repos: [], owner: ownerMatch ? ownerMatch[1] : null }; order.push(org); }
     groups[org].count += 1;
     if (repoName && groups[org].repos.indexOf(repoName) === -1) groups[org].repos.push(repoName);
     total += 1;
@@ -599,7 +617,7 @@ button.contrib-tile.is-active {
   if (!total) return;
   order.sort(function (a, b) { return groups[b].count - groups[a].count; });
 
-  function tile(count, name, sub, isTotal) {
+  function tile(count, name, sub, isTotal, owner) {
     var el = document.createElement(isTotal ? 'div' : 'button');
     el.className = 'contrib-tile' + (isTotal ? ' contrib-tile-total' : '');
     if (!isTotal) {
@@ -608,10 +626,23 @@ button.contrib-tile.is-active {
       el.setAttribute('aria-pressed', 'false');
       el.setAttribute('aria-label', count + ' merged contribution' + (count === 1 ? '' : 's') + ' to ' + name + '. Click to filter.');
     }
+    var top = document.createElement('div');
+    top.className = 'contrib-tile-top';
     var c = document.createElement('div');
     c.className = 'contrib-tile-count';
     c.setAttribute('data-target', count);
     c.textContent = count;
+    top.appendChild(c);
+    // The org's GitHub avatar is its logo; drop it quietly if it fails to load.
+    if (owner) {
+      var logo = document.createElement('img');
+      logo.className = 'contrib-tile-logo';
+      logo.src = 'https://github.com/' + owner + '.png?size=64';
+      logo.alt = '';
+      logo.decoding = 'async';
+      logo.addEventListener('error', function () { logo.remove(); });
+      top.appendChild(logo);
+    }
     var label = document.createElement('div');
     var n = document.createElement('div');
     n.className = 'contrib-tile-name';
@@ -621,7 +652,7 @@ button.contrib-tile.is-active {
     r.textContent = sub;
     label.appendChild(n);
     label.appendChild(r);
-    el.appendChild(c);
+    el.appendChild(top);
     el.appendChild(label);
     return el;
   }
@@ -629,7 +660,7 @@ button.contrib-tile.is-active {
   var heroTile = tile(total, 'merged contributions', order.length + ' organizations', true);
   statsEl.appendChild(heroTile);
   order.forEach(function (org) {
-    statsEl.appendChild(tile(groups[org].count, org, groups[org].repos.join(', '), false));
+    statsEl.appendChild(tile(groups[org].count, org, groups[org].repos.join(', '), false, groups[org].owner));
   });
 
   // Pick the column count that packs the tiles into a full rectangle.
