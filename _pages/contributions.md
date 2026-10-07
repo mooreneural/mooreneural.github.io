@@ -162,7 +162,7 @@ html[data-theme='dark'] .contrib-status-adopted {
   <div class="contrib-item">
     <div class="contrib-meta">
       <div class="contrib-date">Sep 2026</div>
-      <div class="contrib-status-adopted">adopted</div>
+      <div class="contrib-status">merged</div>
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
