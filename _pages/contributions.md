@@ -76,6 +76,26 @@ html[data-theme='dark'] .contrib-status-review {
   border-color: #1565c0;
 }
 
+.contrib-status-adopted {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  background: #ede7f6;
+  color: #5e35b1;
+  border: 1px solid #b39ddb;
+}
+
+html[data-theme='dark'] .contrib-status-adopted {
+  background: #221a33;
+  color: #b39ddb;
+  border-color: #5e35b1;
+}
+
 .contrib-body {
   flex: 1;
 }
@@ -138,6 +158,36 @@ html[data-theme='dark'] .contrib-status-review {
 </style>
 
 <div class="contrib-list">
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
+      <div class="contrib-date">Sep 2026</div>
+      <div class="contrib-status-adopted">adopted</div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
+        <a href="https://github.com/google-deepmind/alphafold3/pull/728" target="_blank" rel="noopener noreferrer">
+          Validate template query indices against the sequence length
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/google-deepmind/alphafold3" target="_blank" rel="noopener noreferrer">google-deepmind/alphafold3</a>
+        <a class="contrib-company" href="https://deepmind.google" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> Google DeepMind
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Found that template <code>queryIndices</code> outside the sequence were never validated. An index past the end
+        crashed later in featurisation with a bare numpy error, and a negative index was accepted silently: the chain
+        folded against an alignment the user never specified, and the run looked normal. Proposed rejecting
+        out-of-range indices at parse time alongside the existing PTM bounds check, verified end to end on the real
+        pipeline. The fix was implemented differently by
+        <a href="https://github.com/Augustin-Zidek" target="_blank" rel="noopener noreferrer">Augustin Zidek</a>,
+        with validation and tests added to <code>folding_input.py</code>, citing the PR as its basis.
+        <a href="https://github.com/google-deepmind/alphafold3/commit/c6ea94f5e94bf9df494b37817c270818d4a4c6b1" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">c6ea94f</a>
+      </p>
+    </div>
+  </div>
 
   <div class="contrib-item">
     <div class="contrib-meta">
