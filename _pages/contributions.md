@@ -193,8 +193,8 @@ button.contrib-tile.is-active {
 }
 
 .contrib-tile-logo {
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
   border-radius: 5px;
   object-fit: contain;
