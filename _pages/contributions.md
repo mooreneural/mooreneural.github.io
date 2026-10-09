@@ -257,6 +257,36 @@ button.contrib-tile.is-active {
 
   <div class="contrib-item">
     <div class="contrib-meta">
+      <div class="contrib-date">Oct 2026</div>
+      <div class="contrib-status">merged</div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
+        <a href="https://github.com/google-deepmind/alphafold3/pull/741" target="_blank" rel="noopener noreferrer">
+          Report a clear error for GPUs without a numeric compute capability
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/google-deepmind/alphafold3" target="_blank" rel="noopener noreferrer">google-deepmind/alphafold3</a>
+        <a class="contrib-company" href="https://deepmind.google" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> Google DeepMind
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Ran AlphaFold 3 on an AMD Instinct MI300X and found that <code>run_alphafold.py</code> assumed every GPU
+        reports a numeric compute capability. AMD reports <code>'gfx942'</code>, so startup crashed with an
+        unexplained <code>ValueError</code>. Proposed an actionable error that names the device and points to
+        <code>--jax_backend=cpu</code>, with no change on NVIDIA. Verified the CPU backend on the MI300X matched an
+        RTX 5080 CUDA reference (pTM 0.83, mean pLDDT 90.20), and mapped the remaining blockers for ROCm support in
+        tokamax and the ROCm JAX plugin. Fixed in <code>run_alphafold.py</code> by
+        <a href="https://github.com/Augustin-Zidek" target="_blank" rel="noopener noreferrer">Augustin Zidek</a>.
+        <a href="https://github.com/google-deepmind/alphafold3/commit/cfbfdddf2cebed807d293ffaea601c7a3ca2cd28" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">cfbfddd</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
       <div class="contrib-date">Sep 2026</div>
       <div class="contrib-status">merged</div>
     </div>
