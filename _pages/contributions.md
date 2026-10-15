@@ -262,6 +262,36 @@ button.contrib-tile.is-active {
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
+        <a href="https://github.com/ClawBio/ClawBio/pull/624" target="_blank" rel="noopener noreferrer">
+          Test the Gompertz age conversion as a round trip
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/ClawBio/ClawBio" target="_blank" rel="noopener noreferrer">ClawBio/ClawBio</a>
+        <a class="contrib-company" href="https://github.com/ClawBio" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> ClawBio
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Follow-up to my earlier Gompertz fix in <code>proteomics-clock</code>: the existing test still checked the
+        old README formula that fix replaced, so it was failing on main. Rewrote it to check that the cohort-average
+        hazard maps to the UK Biobank training cohort's mean age of 57.29 years, and added a property-based test
+        that every age from 0 to 120 converts to a Gompertz hazard and back to the same age. The old formula fails
+        that test at every age because of its +6.13-year offset. Also documented in the docstring why the formula
+        deliberately differs from the README, so it isn't reverted. Merged by
+        <a href="https://github.com/manuelcorpas" target="_blank" rel="noopener noreferrer">Manuel Corpas</a>.
+        <a href="https://github.com/ClawBio/ClawBio/commit/78c3443ce71a58105d74d1d4d09a70c80714846f" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">78c3443</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
+      <div class="contrib-date">Oct 2026</div>
+      <div class="contrib-status">merged</div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
         <a href="https://github.com/google-deepmind/alphafold3/pull/741" target="_blank" rel="noopener noreferrer">
           Report a clear error for GPUs without a numeric compute capability
         </a>
