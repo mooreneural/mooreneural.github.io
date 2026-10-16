@@ -58,6 +58,18 @@
     border-color: #e65100;
   }
 
+  .sw-status-compete {
+    background: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid #90caf9;
+  }
+
+  html[data-theme='dark'] .sw-status-compete {
+    background: #0d2137;
+    color: #64b5f6;
+    border-color: #1565c0;
+  }
+
   .sw-private {
     background: #fff8e1;
     color: #f57f17;
@@ -277,7 +289,7 @@
 
 {%- assign sw_status = include.project.status | default: "software" -%}
 {%- capture sw_meta -%}
-    <span class="sw-status{% if sw_status contains 'development' %} sw-status-dev{% endif %}">{{ sw_status }}</span>
+    <span class="sw-status{% if sw_status contains 'development' %} sw-status-dev{% elsif sw_status contains 'compet' %} sw-status-compete{% endif %}">{{ sw_status }}</span>
     {% if include.project.private %}
     <span class="sw-private">private</span>
     {% endif %}
@@ -303,8 +315,12 @@
     </div>
     {% else %}
     <div class="sw-title">
+      {% if include.project.url %}
       <a href="{{ include.project.url }}" target="_blank" rel="noopener noreferrer">{{ include.project.name }}</a>
       <i class="fab fa-github sw-gh-icon"></i>
+      {% else %}
+      <span>{{ include.project.name }}</span>
+      {% endif %}
     </div>
     {% endif %}
 
