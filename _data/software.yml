@@ -12,8 +12,8 @@ projects:
       poster: "/assets/lacuna/lacuna_explainer_poster.webp"
       still: "/assets/lacuna/lacuna_explainer_still.webp"
       background: "#0b0e14"
-      width: 720
-      height: 900
+      width: 900
+      height: 1125
       alt: "Animation: TEM-1 beta-lactamase shown as one static structure where a site looks closed, then as an ensemble in which a cryptic pocket opens; Lacuna clusters the pocket across conformers and ranks it."
       caption: "TEM-1 β-lactamase. A cryptic pocket closed in the apo structure (PDB 1JWP) opens along the path to the inhibitor-bound structure (1PZO), and Lacuna finds it across 20 conformers in a retrospective test."
     description: "Python tool for cryptic binding pocket discovery. Generates conformational ensembles (NMA by default; optional OpenMM implicit-solvent MD and Boltz-2 diffusion sampling), detects pockets in every conformer with either a geometric alpha-sphere detector or a learned surface model, clusters them across the ensemble, and ranks them with a learned model over 23 geometric and ensemble-derived features, with an optional PLM-assisted ranker. Evaluated with a size-robust (Jaccard ≥ 0.25) protocol on four independent datasets. On CryptoBench's designated test fold, the zero-dependency default recovers 56% of cryptic sites in its top five and 66% with the PLM-assisted ranker; pooling the geometric and learned-surface candidates via <code>--detector surface-fusion</code> reaches 74%, lifting coverage from 69% to 86% (paired +16.8 points, 95% CI +11.4 to +22.8). Elsewhere: 73% (default) and 80% (PLM-assisted) on PocketMiner, 45% and 41% on a curated apo/holo set, and 87% on COACH420 general binding sites, rising to 97% with <code>--detector surface-fusion</code>. CryptoBench follows the dataset's own homology-separated folds, with the ranker's coefficients fitted on the train folds only. Outputs docking-ready Boltz YAML constraints, AutoDock Vina configs, pseudoatom PDB files with hotspot-centered pocket localization, and the full conformational ensemble as a multi-model PDB. Ships an MCP server and a Claude skill, so the repository imports directly into Claude Science. MIT licensed; v1.2.0 on PyPI as lacuna-pockets. Paper: doi:10.64898/2026.08.14.744956; accompanying analysis: doi:10.64898/2026.08.11.743381."
@@ -48,8 +48,8 @@ projects:
       poster: "/assets/vcell/vcell_zero_shot_poster.webp"
       still: "/assets/vcell/vcell_zero_shot_still.webp"
       background: "#040608"
-      width: 720
-      height: 900
+      width: 900
+      height: 1125
       alt: "Animation of the Virtual Cell Challenge task: an unperturbed cell, a CRISPRi knockdown, and a model predicting the response in a cell context it has never seen perturbed."
       caption: "The challenge task: predict a cell's response to a CRISPRi knockdown in a context the model has never seen perturbed."
     description: "My entry in the Arc Institute's 2026 Virtual Cell Challenge, competing as Team Silver Labs. The task is zero-shot: given the unperturbed state of a cell line and a gene knocked down with CRISPRi, predict how thousands of genes respond in cell contexts with no perturbation data, scored against Perturb-seq measurements the model has never seen. The approach is deliberately constrained to one person, one desktop GPU, and only openly licensed data, to test how far a carefully built model can go against systems trained on much larger private datasets. Featured in Arc's 2026 competitor showcase. The code and a record of negative results will be released after the challenge closes."
