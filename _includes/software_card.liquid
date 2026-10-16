@@ -134,6 +134,7 @@
   }
 
   .sw-badges {
+    clear: both;
     display: flex;
     flex-wrap: wrap;
     gap: 0.3rem;
@@ -149,7 +150,71 @@
     white-space: nowrap;
   }
 
+  /* Featured card: framed panel with a theme-colored accent */
+  .sw-item.is-featured {
+    border: 1px solid var(--global-divider-color);
+    border-left: 3px solid var(--global-theme-color);
+    border-radius: 6px;
+    padding: 1.1rem 1.2rem;
+    margin: 0.4rem 0 1rem 0;
+  }
+
+  .sw-item.is-featured:last-child {
+    border-bottom: 1px solid var(--global-divider-color);
+  }
+
+  /* Logo in place of the text title */
+  .sw-title-logo {
+    margin-bottom: 0.7rem;
+  }
+
+  .sw-title-logo picture,
+  .sw-title-logo img {
+    display: block;
+    height: 54px;
+    width: auto;
+    max-width: 100%;
+  }
+
+  /* Animation, floated beside the description on wide screens */
+  .sw-media {
+    float: right;
+    width: 42%;
+    max-width: 300px;
+    margin: 0.15rem 0 0.8rem 1.1rem;
+  }
+
+  .sw-media-frame {
+    background: #fff;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .sw-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .sw-media figcaption {
+    font-size: 0.7rem;
+    color: var(--global-text-color-light);
+    line-height: 1.4;
+    margin-top: 0.4rem;
+  }
+
+  @media (max-width: 576px) {
+    .sw-media {
+      float: none;
+      width: 100%;
+      max-width: none;
+      margin: 0 0 0.8rem 0;
+    }
+  }
+
   .sw-links {
+    clear: both;
     display: flex;
     flex-wrap: wrap;
     gap: 0.3rem;
@@ -175,7 +240,7 @@
   }
 </style>
 
-<div class="sw-item">
+<div class="sw-item{% if include.project.featured %} is-featured{% endif %}">
   <div class="sw-meta">
     {%- assign sw_status = include.project.status | default: "software" -%}
     <span class="sw-status{% if sw_status contains 'development' %} sw-status-dev{% endif %}">{{ sw_status }}</span>
@@ -188,15 +253,41 @@
   </div>
 
   <div class="sw-body">
+    {% if include.project.logo %}
+    <div class="sw-title sw-title-logo">
+      <a href="{{ include.project.url }}" target="_blank" rel="noopener noreferrer">
+        <picture>
+          {% if include.project.logo.webp %}<source srcset="{{ include.project.logo.webp | relative_url }}" type="image/webp">{% endif %}
+          <img src="{{ include.project.logo.png | relative_url }}" alt="{{ include.project.name }}">
+        </picture>
+      </a>
+      <i class="fab fa-github sw-gh-icon"></i>
+    </div>
+    {% else %}
     <div class="sw-title">
       <a href="{{ include.project.url }}" target="_blank" rel="noopener noreferrer">{{ include.project.name }}</a>
       <i class="fab fa-github sw-gh-icon"></i>
     </div>
+    {% endif %}
 
     {% if include.project.company %}
     <a class="sw-company-link" href="{{ include.project.company_url }}" target="_blank" rel="noopener noreferrer">
       <i class="fas fa-building" style="font-size: 0.65rem;"></i>{{ include.project.company }}
     </a>
+    {% endif %}
+
+    {% if include.project.media %}
+    {%- assign media = include.project.media -%}
+    <figure class="sw-media">
+      <div class="sw-media-frame">
+        <picture>
+          {% if media.still %}<source media="(prefers-reduced-motion: reduce)" srcset="{{ media.still | relative_url }}">{% endif %}
+          {% if media.webp %}<source srcset="{{ media.webp | relative_url }}" type="image/webp">{% endif %}
+          <img src="{{ media.gif | relative_url }}" alt="{{ media.alt }}"{% if media.width %} width="{{ media.width }}" height="{{ media.height }}"{% endif %}>
+        </picture>
+      </div>
+      {% if media.caption %}<figcaption>{{ media.caption }}</figcaption>{% endif %}
+    </figure>
     {% endif %}
 
     <p class="sw-desc">{{ include.project.description }}</p>
