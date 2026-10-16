@@ -152,10 +152,11 @@
 
   /* Featured card: framed panel with a theme-colored accent */
   .sw-item.is-featured {
+    display: block;
     border: 1px solid var(--global-divider-color);
     border-left: 3px solid var(--global-theme-color);
     border-radius: 6px;
-    padding: 1.1rem 1.2rem;
+    padding: 1.2rem 1.4rem;
     margin: 0.4rem 0 1rem 0;
   }
 
@@ -165,23 +166,48 @@
 
   /* Logo in place of the text title */
   .sw-title-logo {
-    margin-bottom: 0.7rem;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 0.9rem;
   }
 
   .sw-title-logo picture,
   .sw-title-logo img {
     display: block;
-    height: 54px;
+    height: 76px;
     width: auto;
     max-width: 100%;
+  }
+
+  /* Status and role sit at the right of the logo row on the featured card */
+  .sw-head-meta {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3rem;
+  }
+
+  .sw-head-meta .sw-status,
+  .sw-head-meta .sw-private {
+    margin-bottom: 0;
   }
 
   /* Animation, floated beside the description on wide screens */
   .sw-media {
     float: right;
-    width: 42%;
-    max-width: 300px;
-    margin: 0.15rem 0 0.8rem 1.1rem;
+    width: 40%;
+    max-width: 290px;
+    margin: 0.2rem 0 0.6rem 1.3rem;
+  }
+
+  .sw-item.is-featured .sw-desc {
+    line-height: 1.6;
+  }
+
+  .sw-desc code {
+    white-space: nowrap;
+    font-size: 0.8em;
   }
 
   .sw-media-frame {
@@ -210,6 +236,22 @@
       width: 100%;
       max-width: none;
       margin: 0 0 0.8rem 0;
+    }
+
+    .sw-item.is-featured {
+      padding: 1rem;
+    }
+
+    .sw-title-logo picture,
+    .sw-title-logo img {
+      height: 58px;
+    }
+
+    .sw-head-meta {
+      margin-left: 0;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
     }
   }
 
@@ -240,9 +282,8 @@
   }
 </style>
 
-<div class="sw-item{% if include.project.featured %} is-featured{% endif %}">
-  <div class="sw-meta">
-    {%- assign sw_status = include.project.status | default: "software" -%}
+{%- assign sw_status = include.project.status | default: "software" -%}
+{%- capture sw_meta -%}
     <span class="sw-status{% if sw_status contains 'development' %} sw-status-dev{% endif %}">{{ sw_status }}</span>
     {% if include.project.private %}
     <span class="sw-private">private</span>
@@ -250,7 +291,13 @@
     {% if include.project.role %}
     <span class="sw-role-label">{{ include.project.role }}</span>
     {% endif %}
+{%- endcapture -%}
+<div class="sw-item{% if include.project.featured %} is-featured{% endif %}">
+  {% unless include.project.featured and include.project.logo %}
+  <div class="sw-meta">
+    {{ sw_meta }}
   </div>
+  {% endunless %}
 
   <div class="sw-body">
     {% if include.project.logo %}
@@ -262,6 +309,11 @@
         </picture>
       </a>
       <i class="fab fa-github sw-gh-icon"></i>
+      {% if include.project.featured %}
+      <div class="sw-head-meta">
+        {{ sw_meta }}
+      </div>
+      {% endif %}
     </div>
     {% else %}
     <div class="sw-title">
