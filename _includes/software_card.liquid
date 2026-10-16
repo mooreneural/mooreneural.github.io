@@ -203,10 +203,22 @@
     overflow: hidden;
   }
 
-  .sw-media img {
+  .sw-media img,
+  .sw-media video {
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  /* Portrait video gets a little more width so its titles stay readable */
+  .sw-media.is-video {
+    width: 44%;
+    max-width: 330px;
+  }
+
+  .sw-media figcaption a {
+    color: var(--global-theme-color);
+    white-space: nowrap;
   }
 
   .sw-media figcaption {
@@ -217,7 +229,8 @@
   }
 
   @media (max-width: 576px) {
-    .sw-media {
+    .sw-media,
+    .sw-media.is-video {
       float: none;
       width: 100%;
       max-width: none;
@@ -303,15 +316,35 @@
 
     {% if include.project.media %}
     {%- assign media = include.project.media -%}
-    <figure class="sw-media">
-      <div class="sw-media-frame">
+    <figure class="sw-media{% if media.mp4 %} is-video{% endif %}">
+      <div class="sw-media-frame"{% if media.background %} style="background: {{ media.background }};"{% endif %}>
+        {% if media.mp4 %}
+        <video autoplay muted loop playsinline preload="auto"
+               poster="{{ media.poster | relative_url }}"
+               {% if media.width %}width="{{ media.width }}" height="{{ media.height }}"{% endif %}
+               aria-label="{{ media.alt }}">
+          <source src="{{ media.mp4 | relative_url }}" type="video/mp4">
+        </video>
+        <script>
+          (function () {
+            // Respect reduced motion: no autoplay, show a still and let the visitor press play.
+            var v = document.currentScript.previousElementSibling;
+            if (!v || !window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            v.removeAttribute('autoplay');
+            v.pause();
+            {% if media.still %}v.poster = '{{ media.still | relative_url }}';{% endif %}
+            v.controls = true;
+          })();
+        </script>
+        {% else %}
         <picture>
           {% if media.still %}<source media="(prefers-reduced-motion: reduce)" srcset="{{ media.still | relative_url }}">{% endif %}
           {% if media.webp %}<source srcset="{{ media.webp | relative_url }}" type="image/webp">{% endif %}
           <img src="{{ media.gif | relative_url }}" alt="{{ media.alt }}"{% if media.width %} width="{{ media.width }}" height="{{ media.height }}"{% endif %}>
         </picture>
+        {% endif %}
       </div>
-      {% if media.caption %}<figcaption>{{ media.caption }}</figcaption>{% endif %}
+      {% if media.caption %}<figcaption>{{ media.caption }}{% if media.mp4 %} <a href="{{ media.mp4 | relative_url }}" target="_blank" rel="noopener noreferrer">Watch full size</a>{% endif %}</figcaption>{% endif %}
     </figure>
     {% endif %}
 
