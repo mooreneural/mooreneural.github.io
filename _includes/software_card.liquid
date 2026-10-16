@@ -152,7 +152,6 @@
 
   /* Featured card: framed panel with a theme-colored accent */
   .sw-item.is-featured {
-    display: block;
     border: 1px solid var(--global-divider-color);
     border-left: 3px solid var(--global-theme-color);
     border-radius: 6px;
@@ -179,19 +178,6 @@
     max-width: 100%;
   }
 
-  /* Status and role sit at the right of the logo row on the featured card */
-  .sw-head-meta {
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.3rem;
-  }
-
-  .sw-head-meta .sw-status,
-  .sw-head-meta .sw-private {
-    margin-bottom: 0;
-  }
 
   /* Animation, floated beside the description on wide screens */
   .sw-media {
@@ -247,12 +233,6 @@
       height: 58px;
     }
 
-    .sw-head-meta {
-      margin-left: 0;
-      flex-direction: row;
-      align-items: center;
-      width: 100%;
-    }
   }
 
   .sw-links {
@@ -293,11 +273,9 @@
     {% endif %}
 {%- endcapture -%}
 <div class="sw-item{% if include.project.featured %} is-featured{% endif %}">
-  {% unless include.project.featured and include.project.logo %}
   <div class="sw-meta">
     {{ sw_meta }}
   </div>
-  {% endunless %}
 
   <div class="sw-body">
     {% if include.project.logo %}
@@ -309,11 +287,6 @@
         </picture>
       </a>
       <i class="fab fa-github sw-gh-icon"></i>
-      {% if include.project.featured %}
-      <div class="sw-head-meta">
-        {{ sw_meta }}
-      </div>
-      {% endif %}
     </div>
     {% else %}
     <div class="sw-title">
