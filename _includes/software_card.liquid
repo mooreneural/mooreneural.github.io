@@ -122,6 +122,20 @@
     flex-shrink: 0;
   }
 
+  .sw-highlight {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--global-text-color);
+    margin: 0 0 0.55rem 0;
+  }
+
+  .sw-highlight i {
+    color: var(--global-theme-color);
+  }
+
   .sw-company-link {
     display: inline-flex;
     align-items: center;
@@ -321,6 +335,12 @@
       {% else %}
       <span>{{ include.project.name }}</span>
       {% endif %}
+    </div>
+    {% endif %}
+
+    {% if include.project.highlight %}
+    <div class="sw-highlight">
+      <i class="fas fa-trophy" aria-hidden="true"></i>{{ include.project.highlight }}
     </div>
     {% endif %}
 

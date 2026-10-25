@@ -42,6 +42,7 @@ projects:
   - id: 2
     name: "vCell"
     status: "competing"
+    highlight: "Validation leaderboard: rank 292, top 18% of more than 1,600 teams"
     featured: true
     media:
       mp4: "/assets/vcell/vcell_zero_shot.mp4"
@@ -52,7 +53,7 @@ projects:
       height: 1125
       alt: "Animation of the Virtual Cell Challenge task: an unperturbed cell, a CRISPRi knockdown, and a model predicting the response in a cell context it has never seen perturbed."
       caption: "The challenge task: predict a cell's response to a CRISPRi knockdown in a context the model has never seen perturbed."
-    description: "My entry in the Arc Institute's 2026 Virtual Cell Challenge, competing as Team Silver Labs. The task is zero-shot: given the unperturbed state of a cell line and a gene knocked down with CRISPRi, predict how thousands of genes respond in cell contexts with no perturbation data, scored against Perturb-seq measurements the model has never seen. The approach is deliberately constrained to one person, one desktop GPU, and only openly licensed data, to test how far a carefully built model can go against systems trained on much larger private datasets. Featured in Arc's 2026 competitor showcase. The code and a record of negative results will be released after the challenge closes."
+    description: "My entry in the Arc Institute's 2026 Virtual Cell Challenge, competing as Team Silver Labs. The task is zero-shot: given the unperturbed state of a cell line and a gene knocked down with CRISPRi, predict how thousands of genes respond in cell contexts with no perturbation data, scored against Perturb-seq measurements the model has never seen. The approach is deliberately constrained to one person, one desktop GPU, and only openly licensed data, to test how far a carefully built model can go against systems trained on much larger private datasets. On the frozen validation leaderboard, scored on a 300-perturbation panel across three cell contexts, vCell ranked 292nd with an overall score of 0.1996, in the top 18% of more than 1,600 teams. Featured in Arc's 2026 competitor showcase. The code and a record of negative results will be released after the challenge closes."
     role: "Competitor"
     links:
       - name: "Virtual Cell Challenge"
@@ -61,6 +62,9 @@ projects:
       - name: "Arc competitor showcase"
         url: "https://arcinstitute.org/news/vcc-competitor-showcase-2026"
         icon: "fas fa-newspaper"
+      - name: "Validation leaderboard"
+        url: "https://virtualcellchallenge.org/leaderboard"
+        icon: "fas fa-ranking-star"
     languages:
       - name: "Python"
         icon: "fab fa-python"
