@@ -19,7 +19,7 @@ social: true  # includes social icons at the bottom of the page
 
 Researcher working at the interface of neuroscience, natural products, and AI-driven drug discovery. My research focuses on computational modeling of neuroinflammation and neural plasticity, with an emphasis on identifying plant-derived and natural product-inspired compounds that may influence therapeutic pathways. I build in silico pipelines for molecular screening, receptor-state classification, and translational discovery workflows that connect computational biology with future wet-lab validation.
 
-I am the author of <a href="https://github.com/mooreneural/lacuna">Lacuna</a>, an open-source tool for finding cryptic binding pockets that only appear as a protein moves. It is available on Claude Science, GPT-Rosalind, Tamarind Bio, and Neurosnap.
+I am the author of <a href="https://github.com/mooreneural/lacuna">Lacuna</a>, an open-source tool for finding cryptic binding pockets that only appear as a protein or RNA moves. It is available on Claude Science, GPT-Rosalind, Tamarind Bio, and Neurosnap.
 
 <style>
   .featured-box {
