@@ -20,7 +20,7 @@ projects:
     role: "Developer"
     links:
       - name: "Run on Tamarind"
-        url: "https://app.tamarind.bio/tools/lacuna"
+        url: "https://www.tamarind.bio/tools/lacuna"
         icon: "fas fa-server"
       - name: "Run on Neurosnap"
         url: "https://neurosnap.ai/service/Lacuna%20Cryptic%20Pocket%20Discovery"

@@ -85,7 +85,7 @@ I am the author of <a href="https://github.com/mooreneural/lacuna">Lacuna</a>, a
     <a href="https://github.com/mooreneural/lacuna" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" style="margin-right:4px;"></i>GitHub</a>
     <a href="https://www.biorxiv.org/content/10.64898/2026.08.14.744956v2" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" style="margin-right:4px;"></i>Preprint</a>
     <a href="https://pypi.org/project/lacuna-pockets/" target="_blank" rel="noopener noreferrer"><i class="fab fa-python" style="margin-right:4px;"></i>PyPI</a>
-    <a href="https://app.tamarind.bio/tools/lacuna" target="_blank" rel="noopener noreferrer"><i class="fas fa-server" style="margin-right:4px;"></i>Run on Tamarind</a>
+    <a href="https://www.tamarind.bio/tools/lacuna" target="_blank" rel="noopener noreferrer"><i class="fas fa-server" style="margin-right:4px;"></i>Run on Tamarind</a>
     <a href="https://neurosnap.ai/service/Lacuna%20Cryptic%20Pocket%20Discovery" target="_blank" rel="noopener noreferrer"><i class="fas fa-server" style="margin-right:4px;"></i>Run on Neurosnap</a>
   </div>
 </div>
