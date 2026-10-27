@@ -15,4 +15,4 @@ A second variant goes further: it docks a ligand library into the top-ranked poc
 
 The example is apo KRAS(G12C), the textbook case: the switch-II pocket isn't there until an inhibitor binds, and Lacuna surfaces it from the unbound structure.
 
-Try it: [Lacuna Cryptic Pocket Discovery on Horus](https://os.templecompute.com/library?release=lacuna-cryptic-pocket-discovery-d2087c)
+Try it: [Lacuna Cryptic Pocket Discovery on Horus](https://os.templecompute.com/library/lacuna-cryptic-pocket-discovery-2500e2)

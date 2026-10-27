@@ -25,6 +25,9 @@ projects:
       - name: "Run on Neurosnap"
         url: "https://neurosnap.ai/service/Lacuna%20Cryptic%20Pocket%20Discovery"
         icon: "fas fa-server"
+      - name: "Run on Horus"
+        url: "https://os.templecompute.com/library/lacuna-cryptic-pocket-discovery-2500e2"
+        icon: "fas fa-server"
     languages:
       - name: "Python"
         icon: "fab fa-python"
