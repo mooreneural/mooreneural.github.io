@@ -7,6 +7,14 @@ nav: true
 nav_order: 4
 ---
 
+<style>
+  /* Software page only: a wider layout so the project cards breathe.
+     Applies to every .container on this page, so the navbar stays aligned with the content. */
+  .container {
+    max-width: 1040px;
+  }
+</style>
+
 <div class="sw-list">
   {% if site.data.software.projects %}
     {% assign projects = site.data.software.projects %}
