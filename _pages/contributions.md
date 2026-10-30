@@ -248,9 +248,91 @@ button.contrib-tile.is-active {
 .contrib-item.is-hidden {
   display: none;
 }
+
+/* Contribution type tags: one color per type, in each entry and in the filter row */
+.contrib-tags {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  margin-top: 0.35rem;
+}
+
+.contrib-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font: inherit;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  padding: 0.12rem 0.4rem;
+  border-radius: 3px;
+  color: var(--tag);
+  background: color-mix(in srgb, var(--tag) 9%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tag) 40%, transparent);
+}
+
+.contrib-tag[data-tag='bug'] { --tag: #c62828; }
+.contrib-tag[data-tag='perf'] { --tag: #6a1b9a; }
+.contrib-tag[data-tag='correctness'] { --tag: #00796b; }
+.contrib-tag[data-tag='validation'] { --tag: #ad6800; }
+.contrib-tag[data-tag='errors'] { --tag: #d84315; }
+.contrib-tag[data-tag='compat'] { --tag: #1565c0; }
+.contrib-tag[data-tag='docs'] { --tag: #455a64; }
+.contrib-tag[data-tag='tests'] { --tag: #2e7d32; }
+.contrib-tag[data-tag='cleanup'] { --tag: #6d4c41; }
+
+html[data-theme='dark'] .contrib-tag[data-tag='bug'] { --tag: #ef9a9a; }
+html[data-theme='dark'] .contrib-tag[data-tag='perf'] { --tag: #ce93d8; }
+html[data-theme='dark'] .contrib-tag[data-tag='correctness'] { --tag: #80cbc4; }
+html[data-theme='dark'] .contrib-tag[data-tag='validation'] { --tag: #ffd54f; }
+html[data-theme='dark'] .contrib-tag[data-tag='errors'] { --tag: #ffab91; }
+html[data-theme='dark'] .contrib-tag[data-tag='compat'] { --tag: #90caf9; }
+html[data-theme='dark'] .contrib-tag[data-tag='docs'] { --tag: #b0bec5; }
+html[data-theme='dark'] .contrib-tag[data-tag='tests'] { --tag: #a5d6a7; }
+html[data-theme='dark'] .contrib-tag[data-tag='cleanup'] { --tag: #bcaaa4; }
+
+button.contrib-tag {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+button.contrib-tag:hover,
+button.contrib-tag.is-active {
+  background: color-mix(in srgb, var(--tag) 20%, transparent);
+}
+
+button.contrib-tag.is-active {
+  box-shadow: inset 0 0 0 1px var(--tag);
+}
+
+button.contrib-tag:focus-visible {
+  outline: 2px solid var(--tag);
+  outline-offset: 1px;
+}
+
+.contrib-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+}
+
+.contrib-types .contrib-tag {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.contrib-tag-count {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+}
 </style>
 
 <div class="contrib-stats" id="contrib-stats" aria-label="Merged contributions by organization"></div>
+<div class="contrib-types" id="contrib-types" aria-label="Filter by contribution type"></div>
 <div class="contrib-filter-note" id="contrib-filter-note" aria-live="polite"></div>
 
 <div class="contrib-list">
@@ -259,6 +341,39 @@ button.contrib-tile.is-active {
     <div class="contrib-meta">
       <div class="contrib-date">Oct 2026</div>
       <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="bug">Bug fix</span></div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
+        <a href="https://github.com/google-deepmind/alphafold3/pull/770" target="_blank" rel="noopener noreferrer">
+          Fix --jax_backend=cpu on machines where JAX can see an NVIDIA GPU
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/google-deepmind/alphafold3" target="_blank" rel="noopener noreferrer">google-deepmind/alphafold3</a>
+        <a class="contrib-company" href="https://deepmind.google" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> Google DeepMind
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Found that <code>--jax_backend=cpu</code> crashed on Linux machines where JAX can see an NVIDIA GPU of compute
+        capability 8.0 or newer. tokamax picks kernels at trace time from JAX's default device rather than the
+        <code>jit</code> target, so the Triton GLU kernel was traced into a computation lowered for CPU and Pallas
+        raised a <code>ValueError</code>. Traced the cause through tokamax and proposed a three-line fix that makes
+        the selected device JAX's default, a no-op for the default GPU run. Verified on an RTX 5080 and a Ryzen 9
+        7900X that a patched CPU run on a GPU machine matches a run with no GPU visible across all eight output
+        files. Merged by
+        <a href="https://github.com/Augustin-Zidek" target="_blank" rel="noopener noreferrer">Augustin Zidek</a>.
+        <a href="https://github.com/google-deepmind/alphafold3/commit/efc412442748dd7d29c8fb88849227bbceddb9d0" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">efc4124</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
+      <div class="contrib-date">Oct 2026</div>
+      <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="tests">Tests</span></div>
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
@@ -289,6 +404,7 @@ button.contrib-tile.is-active {
     <div class="contrib-meta">
       <div class="contrib-date">Oct 2026</div>
       <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="errors">Error handling</span></div>
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
@@ -319,6 +435,7 @@ button.contrib-tile.is-active {
     <div class="contrib-meta">
       <div class="contrib-date">Sep 2026</div>
       <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="validation">Validation</span></div>
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
@@ -349,6 +466,7 @@ button.contrib-tile.is-active {
     <div class="contrib-meta">
       <div class="contrib-date">Sep 2026</div>
       <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="docs">Docs</span><span class="contrib-tag" data-tag="perf">Performance</span></div>
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
@@ -378,6 +496,7 @@ button.contrib-tile.is-active {
     <div class="contrib-meta">
       <div class="contrib-date">Aug 2026</div>
       <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="bug">Bug fix</span><span class="contrib-tag" data-tag="compat">Compatibility</span></div>
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
@@ -407,6 +526,7 @@ button.contrib-tile.is-active {
     <div class="contrib-meta">
       <div class="contrib-date">Aug 2026</div>
       <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="perf">Performance</span><span class="contrib-tag" data-tag="cleanup">Cleanup</span></div>
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
@@ -434,6 +554,7 @@ button.contrib-tile.is-active {
     <div class="contrib-meta">
       <div class="contrib-date">Jul 2026</div>
       <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="perf">Performance</span></div>
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
@@ -461,6 +582,7 @@ button.contrib-tile.is-active {
     <div class="contrib-meta">
       <div class="contrib-date">Jul 2026</div>
       <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="bug">Bug fix</span></div>
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
@@ -489,6 +611,7 @@ button.contrib-tile.is-active {
     <div class="contrib-meta">
       <div class="contrib-date">Jun 2026</div>
       <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="correctness">Correctness</span><span class="contrib-tag" data-tag="tests">Tests</span></div>
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
@@ -517,6 +640,7 @@ button.contrib-tile.is-active {
     <div class="contrib-meta">
       <div class="contrib-date">Jun 2026</div>
       <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="correctness">Correctness</span></div>
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
@@ -544,6 +668,7 @@ button.contrib-tile.is-active {
     <div class="contrib-meta">
       <div class="contrib-date">May 2026</div>
       <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="bug">Bug fix</span><span class="contrib-tag" data-tag="compat">Compatibility</span></div>
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
@@ -569,6 +694,7 @@ button.contrib-tile.is-active {
     <div class="contrib-meta">
       <div class="contrib-date">May 2026</div>
       <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="bug">Bug fix</span><span class="contrib-tag" data-tag="tests">Tests</span></div>
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
@@ -595,6 +721,7 @@ button.contrib-tile.is-active {
     <div class="contrib-meta">
       <div class="contrib-date">May 2026</div>
       <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="perf">Performance</span><span class="contrib-tag" data-tag="correctness">Correctness</span></div>
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
@@ -622,6 +749,7 @@ button.contrib-tile.is-active {
     <div class="contrib-meta">
       <div class="contrib-date">May 2026</div>
       <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="bug">Bug fix</span><span class="contrib-tag" data-tag="cleanup">Cleanup</span></div>
     </div>
     <div class="contrib-body">
       <div class="contrib-title">
@@ -766,21 +894,69 @@ button.contrib-tile.is-active {
     window.requestAnimationFrame(step);
   }
 
-  // Click a tile to show only that organization; click again (or "Show all") to clear.
+  // Type tags: turn each entry's tags into buttons and build a filter row with counts.
+  var typesEl = document.getElementById('contrib-types');
+  var typeCounts = {};
+  var typeLabels = {};
+  var typeOrder = [];
+  items.forEach(function (item) {
+    var keys = [];
+    Array.prototype.forEach.call(item.querySelectorAll('.contrib-tag'), function (span) {
+      var key = span.getAttribute('data-tag');
+      keys.push(key);
+      if (!typeCounts[key]) { typeCounts[key] = 0; typeLabels[key] = span.textContent; typeOrder.push(key); }
+      typeCounts[key] += 1;
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'contrib-tag';
+      b.setAttribute('data-tag', key);
+      b.setAttribute('aria-pressed', 'false');
+      b.textContent = span.textContent;
+      span.replaceWith(b);
+    });
+    item.setAttribute('data-tags', keys.join(' '));
+  });
+  typeOrder.sort(function (a, b) { return typeCounts[b] - typeCounts[a]; });
+  typeOrder.forEach(function (key) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'contrib-tag';
+    b.setAttribute('data-tag', key);
+    b.setAttribute('aria-pressed', 'false');
+    b.appendChild(document.createTextNode(typeLabels[key]));
+    var n = document.createElement('span');
+    n.className = 'contrib-tag-count';
+    n.textContent = typeCounts[key];
+    b.appendChild(n);
+    typesEl.appendChild(b);
+  });
+
+  // Click an organization tile or a type tag to filter; click it again (or "Show all") to clear.
   var active = null;
-  function applyFilter(org) {
-    active = org;
+  function applyFilter(kind, value) {
+    active = kind ? kind + ':' + value : null;
     items.forEach(function (item) {
-      item.classList.toggle('is-hidden', org !== null && item.getAttribute('data-org') !== org);
+      var show = !kind ||
+        (kind === 'org' && item.getAttribute('data-org') === value) ||
+        (kind === 'tag' && (' ' + item.getAttribute('data-tags') + ' ').indexOf(' ' + value + ' ') !== -1);
+      item.classList.toggle('is-hidden', !show);
     });
     Array.prototype.forEach.call(statsEl.querySelectorAll('button.contrib-tile'), function (b) {
-      var on = b.getAttribute('data-org') === org;
+      var on = kind === 'org' && b.getAttribute('data-org') === value;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('button.contrib-tag'), function (b) {
+      var on = kind === 'tag' && b.getAttribute('data-tag') === value;
       b.classList.toggle('is-active', on);
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
     noteEl.innerHTML = '';
-    if (org !== null) {
-      noteEl.appendChild(document.createTextNode('Showing ' + org + ' only. '));
+    if (kind) {
+      var shown = items.filter(function (item) { return !item.classList.contains('is-hidden'); }).length;
+      noteEl.appendChild(document.createTextNode(kind === 'org'
+        ? 'Showing ' + value + ' only. '
+        : 'Showing ' + shown + ' tagged ' + typeLabels[value] + '. '));
       var clear = document.createElement('button');
       clear.type = 'button';
       clear.textContent = 'Show all';
@@ -788,11 +964,15 @@ button.contrib-tile.is-active {
       noteEl.appendChild(clear);
     }
   }
-  statsEl.addEventListener('click', function (e) {
-    var b = e.target.closest('button.contrib-tile');
-    if (!b) return;
-    var org = b.getAttribute('data-org');
-    applyFilter(active === org ? null : org);
+  document.addEventListener('click', function (e) {
+    var tileBtn = e.target.closest('button.contrib-tile');
+    var tagBtn = e.target.closest('button.contrib-tag');
+    var kind = tileBtn ? 'org' : tagBtn ? 'tag' : null;
+    if (!kind) return;
+    var value = tileBtn ? tileBtn.getAttribute('data-org') : tagBtn.getAttribute('data-tag');
+    if (active === kind + ':' + value) applyFilter(null);
+    else applyFilter(kind, value);
+    if (tagBtn && !typesEl.contains(tagBtn)) statsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 })();
 </script>
