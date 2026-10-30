@@ -88,5 +88,6 @@ I am the author of <a href="https://github.com/mooreneural/lacuna">Lacuna</a>, a
     <a href="https://www.tamarind.bio/tools/lacuna" target="_blank" rel="noopener noreferrer"><i class="fas fa-server" style="margin-right:4px;"></i>Run on Tamarind</a>
     <a href="https://neurosnap.ai/service/Lacuna%20Cryptic%20Pocket%20Discovery" target="_blank" rel="noopener noreferrer"><i class="fas fa-server" style="margin-right:4px;"></i>Run on Neurosnap</a>
     <a href="https://os.templecompute.com/library/lacuna-cryptic-pocket-discovery-2500e2" target="_blank" rel="noopener noreferrer"><i class="fas fa-server" style="margin-right:4px;"></i>Run on Horus</a>
+    <a href="https://cognichem.com/docs/tools/lacuna" target="_blank" rel="noopener noreferrer"><i class="fas fa-server" style="margin-right:4px;"></i>Run on CogniChem</a>
   </div>
 </div>
