@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Ph.D. Student @ <a href='https://www.tamu.edu/'>Texas A&M University</a>.
+subtitle: Ph.D. Student @ <a href='https://soilcrop.tamu.edu/people/moore-clayton/'>Texas A&M University</a>.
 
 profile:
   align: right
