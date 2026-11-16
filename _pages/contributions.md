@@ -339,6 +339,69 @@ button.contrib-tag:focus-visible {
 
   <div class="contrib-item">
     <div class="contrib-meta">
+      <div class="contrib-date">Nov 2026</div>
+      <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="bug">Bug fix</span><span class="contrib-tag" data-tag="compat">Compatibility</span><span class="contrib-tag" data-tag="tests">Tests</span></div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
+        <a href="https://github.com/ClawBio/ClawBio/pull/802" target="_blank" rel="noopener noreferrer">
+          Cache proteomics-clock downloads byte for byte and reject empty folds
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/ClawBio/ClawBio" target="_blank" rel="noopener noreferrer">ClawBio/ClawBio</a>
+        <a class="contrib-company" href="https://github.com/ClawBio" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> ClawBio
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Found that <code>proteomics-clock</code> cached its organ-aging coefficient files in text mode. 42 of the 46
+        files use CRLF line endings, which Windows wrote back as CR CR LF, and the checksum was computed after that
+        write, so the damaged cache passed its own check. Every cached run then saw a blank row after each fold:
+        <code>--fold 1</code> silently left the organ with no coefficients and <code>--fold 2</code> silently used
+        fold 1's, so only the first run was right, for 21 of 23 organs. The cache now stores and hashes the exact
+        bytes served, blank lines are no longer counted as folds, and an empty fold raises an error naming the file
+        instead of predicting NaN. Caches damaged by earlier runs parse correctly without being cleared. Merged by
+        <a href="https://github.com/manuelcorpas" target="_blank" rel="noopener noreferrer">Manuel Corpas</a>.
+        <a href="https://github.com/ClawBio/ClawBio/commit/049d61d6c157eb1a5182d3d44335c9285886f928" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">049d61d</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
+      <div class="contrib-date">Nov 2026</div>
+      <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="bug">Bug fix</span><span class="contrib-tag" data-tag="compat">Compatibility</span></div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
+        <a href="https://github.com/ClawBio/ClawBio/pull/803" target="_blank" rel="noopener noreferrer">
+          Write organ-aging-studio's report as UTF-8, not the locale encoding
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/ClawBio/ClawBio" target="_blank" rel="noopener noreferrer">ClawBio/ClawBio</a>
+        <a class="contrib-company" href="https://github.com/ClawBio" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> ClawBio
+        </a>
+      </div>
+      <p class="contrib-desc">
+        <code>organ-aging-studio</code> wrote <code>report.md</code> in the locale encoding, and the report's formula
+        contains <code>&Sigma;</code>, which neither Windows' cp1252 nor the ASCII C locale can encode. Every run on
+        those locales crashed with a <code>UnicodeEncodeError</code>, left an empty report and wrote no
+        reproducibility bundle. The report and <code>result.json</code> are now written as UTF-8, and the CLI escapes
+        symbols such as &#10003; and &rarr; that a redirected console can't show instead of crashing on its last line.
+        Predicted ages are unchanged. Verified on Windows and on Linux with a forced non-UTF-8 locale. Merged by
+        <a href="https://github.com/manuelcorpas" target="_blank" rel="noopener noreferrer">Manuel Corpas</a>.
+        <a href="https://github.com/ClawBio/ClawBio/commit/c181ba9d87b1a1958f29826b8c8cc39d846a6e5b" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">c181ba9</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
       <div class="contrib-date">Oct 2026</div>
       <div class="contrib-status">merged</div>
       <div class="contrib-tags"><span class="contrib-tag" data-tag="bug">Bug fix</span></div>
