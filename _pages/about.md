@@ -49,6 +49,27 @@ I am the author of <a href="https://github.com/mooreneural/lacuna">Lacuna</a>, a
   .featured-title a:hover {
     text-decoration: underline;
   }
+  .featured-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.12rem 0.5rem;
+    border-radius: 3px;
+    border: 1.5px solid var(--global-divider-color);
+    color: var(--global-text-color-light) !important;
+    font-variant-numeric: tabular-nums;
+  }
+  .featured-stars i {
+    color: #e3b341;
+  }
+  .featured-stars:hover {
+    border-color: var(--global-text-color);
+    text-decoration: none !important;
+  }
   .featured-desc {
     font-size: 0.86rem;
     color: var(--global-text-color);
@@ -79,7 +100,23 @@ I am the author of <a href="https://github.com/mooreneural/lacuna">Lacuna</a>, a
 
 <div class="featured-box">
   <div class="featured-label">Featured</div>
-  <div class="featured-title"><a href="https://github.com/mooreneural/lacuna" target="_blank" rel="noopener noreferrer">Lacuna</a></div>
+  <div class="featured-title">
+    <a href="https://github.com/mooreneural/lacuna" target="_blank" rel="noopener noreferrer">Lacuna</a>
+    <a class="featured-stars" href="https://github.com/mooreneural/lacuna/stargazers" target="_blank" rel="noopener noreferrer" aria-label="GitHub stars">
+      <i class="fas fa-star" aria-hidden="true"></i><span id="lacuna-stars">116</span> stars
+    </a>
+  </div>
+  <script>
+    // Refresh the star count from GitHub; the number above is the fallback.
+    fetch('https://api.github.com/repos/mooreneural/lacuna')
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (d && typeof d.stargazers_count === 'number') {
+          document.getElementById('lacuna-stars').textContent = d.stargazers_count.toLocaleString('en-US');
+        }
+      })
+      .catch(function () {});
+  </script>
   <p class="featured-desc">Cryptic binding pocket discovery via conformational ensemble analysis. Generates an ensemble, detects pockets in every conformer, and clusters them to surface sites that are closed in the static structure. MIT licensed, runs on a CPU, and ships an MCP server and Claude skill.</p>
   <div class="featured-links">
     <a href="https://github.com/mooreneural/lacuna" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" style="margin-right:4px;"></i>GitHub</a>
