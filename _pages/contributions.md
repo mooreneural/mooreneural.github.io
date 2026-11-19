@@ -341,6 +341,69 @@ button.contrib-tag:focus-visible {
     <div class="contrib-meta">
       <div class="contrib-date">Nov 2026</div>
       <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="tests">Tests</span></div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
+        <a href="https://github.com/ClawBio/ClawBio/pull/826" target="_blank" rel="noopener noreferrer">
+          Cover the shared ClawBio writers in organ-aging-studio's encoding test
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/ClawBio/ClawBio" target="_blank" rel="noopener noreferrer">ClawBio/ClawBio</a>
+        <a class="contrib-company" href="https://github.com/ClawBio" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> ClawBio
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Follow-up to the review of my UTF-8 fix (#803). Its test turned a missing file encoding into an error only
+        for the skill's own script, so an unencoded write in the shared <code>clawbio</code> reproducibility writers
+        the demo also calls would have passed. The test now starts the CLI through a short runner whose warning
+        filter is a regular expression covering the script and every <code>clawbio</code> module, which
+        <code>-W</code> on the command line cannot express. The widened test passes on main, confirming those writers
+        were already safe, and the PR maps 27 other locale-dependent text reads and writes in <code>clawbio/</code>
+        for separate fixes, one of which fails on Windows today. Merged by
+        <a href="https://github.com/manuelcorpas" target="_blank" rel="noopener noreferrer">Manuel Corpas</a>.
+        <a href="https://github.com/ClawBio/ClawBio/commit/88bc485a395c802ba4703b943db06e5fc2065d4a" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">88bc485</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
+      <div class="contrib-date">Nov 2026</div>
+      <div class="contrib-status">merged</div>
+      <div class="contrib-tags"><span class="contrib-tag" data-tag="tests">Tests</span></div>
+    </div>
+    <div class="contrib-body">
+      <div class="contrib-title">
+        <a href="https://github.com/ClawBio/ClawBio/pull/827" target="_blank" rel="noopener noreferrer">
+          Test blank lines between proteomics-clock's fold rows
+        </a>
+      </div>
+      <div class="contrib-repo">
+        <a href="https://github.com/ClawBio/ClawBio" target="_blank" rel="noopener noreferrer">ClawBio/ClawBio</a>
+        <a class="contrib-company" href="https://github.com/ClawBio" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-building" style="font-size: 0.65rem;"></i> ClawBio
+        </a>
+      </div>
+      <p class="contrib-desc">
+        Follow-up to the review of my cache fix (#802), which noted that removing its blank-line filter left all 17
+        existing tests passing. Added a Hypothesis property that inserts blank lines after the header, between fold
+        rows or at the end, with LF or CRLF endings, and checks that each fold still returns its own coefficients
+        and that a fold past the last raises the fold-count error. Also let the file's property tests run on their
+        own: run alone, they paid for importing pandas and matplotlib on their first example and missed
+        Hypothesis's 200 ms deadline. Merged by
+        <a href="https://github.com/manuelcorpas" target="_blank" rel="noopener noreferrer">Manuel Corpas</a>.
+        <a href="https://github.com/ClawBio/ClawBio/commit/b638c0ff2ca46251b72ab81efcf2d65fa48c8300" target="_blank" rel="noopener noreferrer" style="font-family: monospace; font-size: 0.78rem; color: var(--global-text-color-light);">b638c0f</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="contrib-item">
+    <div class="contrib-meta">
+      <div class="contrib-date">Nov 2026</div>
+      <div class="contrib-status">merged</div>
       <div class="contrib-tags"><span class="contrib-tag" data-tag="bug">Bug fix</span><span class="contrib-tag" data-tag="compat">Compatibility</span><span class="contrib-tag" data-tag="tests">Tests</span></div>
     </div>
     <div class="contrib-body">
