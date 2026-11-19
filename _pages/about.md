@@ -120,7 +120,7 @@ I am the author of <a href="https://github.com/mooreneural/lacuna">Lacuna</a>, a
   <p class="featured-desc">Cryptic binding pocket discovery via conformational ensemble analysis. Generates an ensemble, detects pockets in every conformer, and clusters them to surface sites that are closed in the static structure. MIT licensed, runs on a CPU, and ships an MCP server and Claude skill.</p>
   <div class="featured-links">
     <a href="https://github.com/mooreneural/lacuna" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" style="margin-right:4px;"></i>GitHub</a>
-    <a href="https://www.biorxiv.org/content/10.64898/2026.08.14.744956v2" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" style="margin-right:4px;"></i>Preprint</a>
+    <a href="https://www.biorxiv.org/content/10.64898/2026.08.14.744956v3" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" style="margin-right:4px;"></i>Preprint</a>
     <a href="https://pypi.org/project/lacuna-pockets/" target="_blank" rel="noopener noreferrer"><i class="fab fa-python" style="margin-right:4px;"></i>PyPI</a>
     <a href="https://www.tamarind.bio/tools/lacuna" target="_blank" rel="noopener noreferrer"><i class="fas fa-server" style="margin-right:4px;"></i>Run on Tamarind</a>
     <a href="https://neurosnap.ai/service/Lacuna%20Cryptic%20Pocket%20Discovery" target="_blank" rel="noopener noreferrer"><i class="fas fa-server" style="margin-right:4px;"></i>Run on Neurosnap</a>
