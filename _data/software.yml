@@ -51,7 +51,9 @@ projects:
   - id: 2
     name: "vCell"
     status: "competed"
-    highlight: "Final results: rank 181 of 806 teams (top 22.5%)"
+    highlight:
+      - "Validation round: rank 213 of 1,457 teams (top 14.6%)"
+      - "Final round, scored blind: rank 181 of 806 teams (top 22.5%)"
     featured: true
     media:
       mp4: "/assets/vcell/vcell_zero_shot.mp4"

@@ -132,6 +132,18 @@
     margin: 0 0 0.55rem 0;
   }
 
+  .sw-highlights {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    margin: 0 0 0.55rem 0;
+  }
+
+  .sw-highlights .sw-highlight {
+    margin: 0;
+  }
+
   .sw-highlight i {
     color: var(--global-theme-color);
   }
@@ -339,8 +351,20 @@
     {% endif %}
 
     {% if include.project.highlight %}
-    <div class="sw-highlight">
-      <i class="fas fa-trophy" aria-hidden="true"></i>{{ include.project.highlight }}
+    {%- comment -%} highlight may be one string or a list of strings {%- endcomment -%}
+    {%- assign sw_hl_json = include.project.highlight | jsonify -%}
+    {%- assign sw_hl_first = sw_hl_json | slice: 0 -%}
+    {%- if sw_hl_first == "[" -%}
+      {%- assign sw_highlights = include.project.highlight -%}
+    {%- else -%}
+      {%- assign sw_highlights = include.project.highlight | split: "@@@" -%}
+    {%- endif -%}
+    <div class="sw-highlights">
+      {% for item in sw_highlights %}
+      <div class="sw-highlight">
+        <i class="fas fa-trophy" aria-hidden="true"></i>{{ item }}
+      </div>
+      {% endfor %}
     </div>
     {% endif %}
 
